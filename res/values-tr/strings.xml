@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Burch Sözlük</string>
+    <string name="search_hint">Ara...</string>
+    <string name="action_about">Sözlük Hakkında</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="button_text">CH</string>
+    <string name="no_data">No Data Found!</string>
+    <string name="no_phrases">Bu sozcuk veya anlam veri tabaninda bulunmamaktadir!!!</string>
+    <string name="about_text">\nSözlük Türkçe-İngilizce-Boşnakca v1.0
+        							\n\nBu üç-dil arası çeviri yapan bir uygulamadır. Boşnakça, Türkçe ve İngilizce dilleri arasında çeviri yapabilirsiniz.
+        					   \n \nBu uygulama Uluslararası Burç Üniversitesinin bir projesidir. (Bosnia and Herzegovina)
+        						\n\nProje hakkında daha fazla bilgi için: \nmarslan@ibu.edu.ba
+        						\n\nGeliştirici ile irtibata geçmek için (hata raporları, sorun bildirme, ve görüşler buraya): :\nsulejmansarajlija@gmail.com\n </string>
+
+</resources>

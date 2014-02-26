@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Burch Dictionary</string>
+    <string name="action_about">About Dictionary</string>
+    <string name="search_hint">Search...</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="button_text">CH</string>
+    <string name="no_phrases">NO PHRASES FOUND FOR THIS WORD IN DATABASE!!!</string>
+    <string name="no_data">No Data Found!</string>
+    <string name="about_text">\nTurkish-Bosnian-English Dictionary v1.0
+        							\n\nThis is trilingual dictionary that contains some useful phrases too.
+        					 You can search any of these three languages :
+        					  Bosnian, Turkish or English.
+        					   \n \nThis is project of International Burch University in Sarajevo (Bosnia and Herzegovina)
+        						\n\nFor details about project:\nmarslan@ibu.edu.ba
+        						\n\nDeveloper email(report bugs here):\nsulejmansarajlija@gmail.com\n </string>
+    <string name="search_options">Search</string>
+    <string name="appereance_options">Appereance</string>
+    <string name="fullscreen_checkbox">Set Fullscreen</string>
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Burch Rječnik</string>
+    <string name="action_about">O Rječniku</string>
+    <string name="search_hint">Pretraži...</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="button_text">CH</string>
+    <string name="no_data">No Data Found!</string>
+    <string name="no_phrases">NIJE PRONAĐENA NIJEDNA FRAZA ZA OVU RIJEČ!!!</string>
+    <string name="about_text">\nTurski-Bosanski-Engleski Rječnik v1.0
+        							\n\nOvo je trilingualni rječnik sa frazama.
+        					 Možete da pretražujete jedan od slijedećih jezika: Bosanski, Turski ili Engleski.
+        					   \n \nOvaj rječnik je projekat Internacionalnog Univerziteta Burč (International Burch University) u Sarajevu (Bosnia and Herzegovina)
+        						\n\nZa detalje o projektu obratite se na email:\nmarslan@ibu.edu.ba
+        						\n\nEmail razvojnog programera (na ovaj email prijavite greške u aplikaciji):\nsulejmansarajlija@gmail.com\n </string>
+
+</resources>
