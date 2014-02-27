@@ -1,6 +1,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/menu_language"
+        android:icon="@drawable/ic_action_tr"
+        android:showAsAction="ifRoom"
+        android:title="@string/menu_language">
+        <menu>
+            <group
+                android:id="@+id/languageGroup"
+                android:checkableBehavior="none" >
+                <item
+                    android:id="@+id/languageTurkish"
+                    android:checkable="false"
+                    android:title="@string/menu_language_turkish"/>
+                <item
+                    android:id="@+id/languageBosnian"
+                    android:checkable="false"
+                    android:title="@string/menu_language_bosnian"/>
+                <item
+                    android:id="@+id/languageEnglish"
+                    android:checkable="false"
+                    android:title="@string/menu_language_english"/>
+            </group>
+        </menu>
+    </item>
+    <item
         android:id="@+id/action_about"
         android:orderInCategory="100"
         android:showAsAction="never"

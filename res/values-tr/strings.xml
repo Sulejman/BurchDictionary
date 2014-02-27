@@ -3,7 +3,7 @@
 
     <string name="app_name">Burch Sözlük</string>
     <string name="search_hint">Ara...</string>
-    <string name="action_about">Sözlük Hakkında</string>
+    <string name="action_about">Hakkında</string>
     <string name="hello_world">Hello world!</string>
     <string name="button_text">CH</string>
     <string name="no_data">No Data Found!</string>
