@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
@@ -47,8 +47,7 @@
                 android:paddingLeft="2dp"
                 android:text="TextView"
                 android:textColor="#FF0000"
-                android:textSize="13sp"/>
-
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,7 +86,6 @@
                 android:text="TextView"
                 android:textColor="#0000FF"
                 android:textSize="10sp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -114,9 +112,7 @@
                 android:textColor="#000000"
                 android:textSize="10sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
-
     </LinearLayout>
 
 </LinearLayout>

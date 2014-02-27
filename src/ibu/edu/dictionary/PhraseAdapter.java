@@ -19,9 +19,8 @@ public class PhraseAdapter extends BaseAdapter {
 	private List<Word> wordList = null;
 	private ArrayList<Word> arraylist;
 
-	//Constructor
-	public PhraseAdapter(Context context,List<Word> wordList) 
-	{
+	// Constructor
+	public PhraseAdapter(Context context, List<Word> wordList) {
 		mContext = context;
 		this.wordList = wordList;
 		inflater = LayoutInflater.from(mContext);
@@ -51,38 +50,51 @@ public class PhraseAdapter extends BaseAdapter {
 	public long getItemId(int position) {
 		return position;
 	}
-	
-	
+
 	public View getView(final int position, View view, ViewGroup parent) {
 		final ViewHolder holder;
 		if (view == null) {
 			holder = new ViewHolder();
 			view = inflater.inflate(R.layout.details_each, null);
 			// Locate the TextViews in each_item.xml
-			holder.textViewEnPh = (TextView) view.findViewById(R.id.textViewEnglishPhrase);
-			holder.textViewTrPh = (TextView) view.findViewById(R.id.textViewTurkishPhrase);
-			holder.textViewBsPh = (TextView) view.findViewById(R.id.textViewBosnianPhrase);
-			holder.textViewTrPhBsPr = (TextView) view.findViewById(R.id.textViewTurkishPhraseBosnianPronunciation);
-			holder.textViewBsPhTrPr = (TextView) view.findViewById(R.id.textViewBosnianPhraseTurkishPronunciation);
+			holder.textViewEnPh = (TextView) view
+					.findViewById(R.id.textViewEnglishPhrase);
+			holder.textViewTrPh = (TextView) view
+					.findViewById(R.id.textViewTurkishPhrase);
+			holder.textViewBsPh = (TextView) view
+					.findViewById(R.id.textViewBosnianPhrase);
+			holder.textViewTrPhBsPr = (TextView) view
+					.findViewById(R.id.textViewTurkishPhraseBosnianPronunciation);
+			holder.textViewBsPhTrPr = (TextView) view
+					.findViewById(R.id.textViewBosnianPhraseTurkishPronunciation);
 			view.setTag(holder);
-			
+
 		} else {
 			holder = (ViewHolder) view.getTag();
 		}
-		
+
 		holder.textViewBsPh.setText(wordList.get(position).KEY_BOSNIAN_PHRASE);
 		holder.textViewTrPh.setText(wordList.get(position).KEY_TURKISH_PHRASE);
-		try{
-		if(!wordList.get(position).KEY_TURKISH_PHRASE_BOSNIAN_PRONUNCIATION.equals("")){
-		holder.textViewTrPhBsPr.setText("[ "+ wordList.get(position).KEY_TURKISH_PHRASE_BOSNIAN_PRONUNCIATION + " ]");
-		holder.textViewBsPhTrPr.setText("[ " + wordList.get(position).KEY_BOSNIAN_PHRASE_TURKISH_PRONUNCIATION + " ]");}}
-		catch(NullPointerException e){
-			holder.textViewTrPhBsPr.setText(mContext.getResources().getString(R.string.no_phrases));
+		try {
+			if (!wordList.get(position).KEY_TURKISH_PHRASE_BOSNIAN_PRONUNCIATION
+					.equals("")) {
+				holder.textViewTrPhBsPr
+						.setText("[ "
+								+ wordList.get(position).KEY_TURKISH_PHRASE_BOSNIAN_PRONUNCIATION
+								+ " ]");
+				holder.textViewBsPhTrPr
+						.setText("[ "
+								+ wordList.get(position).KEY_BOSNIAN_PHRASE_TURKISH_PRONUNCIATION
+								+ " ]");
+			}
+		} catch (NullPointerException e) {
+			holder.textViewTrPhBsPr.setText(mContext.getResources().getString(
+					R.string.no_phrases));
 			holder.textViewBsPhTrPr.setText(" ");
 		}
-			
+
 		holder.textViewEnPh.setText(wordList.get(position).KEY_ENGLISH_PHRASE);
-		
+
 		return view;
 	}
 
@@ -93,7 +105,7 @@ public class PhraseAdapter extends BaseAdapter {
 			wordList.addAll(arraylist);
 		} else {
 			for (Word wp : arraylist) {
-					wordList.add(wp);
+				wordList.add(wp);
 			}
 		}
 		notifyDataSetChanged();

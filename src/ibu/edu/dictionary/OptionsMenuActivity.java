@@ -11,87 +11,81 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class OptionsMenuActivity extends Activity{
-	
+public class OptionsMenuActivity extends Activity {
+
 	TextView search;
 	TextView appereance;
 	TextView about;
 	CheckBox isFullScreen;
-	
+
 	protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.settings);
-        
-        search = (TextView)findViewById(R.id.textViewSearchOptions);
-        appereance = (TextView)findViewById(R.id.textViewAppereanceOptions);
-        about = (TextView)findViewById(R.id.textViewAboutDictionary);
-        
-        about.setOnClickListener(new OnClickListener(){
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.settings);
+
+		search = (TextView) findViewById(R.id.textViewSearchOptions);
+		appereance = (TextView) findViewById(R.id.textViewAppereanceOptions);
+		about = (TextView) findViewById(R.id.textViewAboutDictionary);
+
+		about.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				showAbout();
 			}
-        	
-        });
-        
-        appereance.setOnClickListener(new OnClickListener(){
+
+		});
+
+		appereance.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				showAppereance();
 			}
-        	
-        });
-        
-        
 
-    }
-	
-	public void showAbout(){
-		 // Create custom dialog object
-       final Dialog dialog = new Dialog(OptionsMenuActivity.this);
-       // Include dialog.xml file
-       dialog.setContentView(R.layout.about);
-       // Set dialog title
-       dialog.setTitle(getString(R.string.action_about));
+		});
 
-       // set values for custom dialog components - text, image and button
-       ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
-       image.setImageResource(R.drawable.logo);
-
-       dialog.show();
 	}
-	
-	public void showAppereance(){
-		 // Create custom dialog object
 
-	     
-      final Dialog dialog = new Dialog(OptionsMenuActivity.this);
-      // Include dialog.xml fill
-      
-      dialog.setContentView(R.layout.appereance);
-      isFullScreen = (CheckBox)dialog.findViewById(R.id.checkBoxFullscreen);
-      
-      if(isFullScreen.isChecked())
-      {
-    	  
-    	  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-    	  setContentView(R.layout.activity_search);
-          setContentView(R.layout.settings);
-      }
-      else
-      {
-    	  //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-          //setContentView(R.layout.settings);
-      }
-      // Set dialog title
+	public void showAbout() {
+		// Create custom dialog object
+		final Dialog dialog = new Dialog(OptionsMenuActivity.this);
+		// Include dialog.xml file
+		dialog.setContentView(R.layout.about);
+		// Set dialog title
+		dialog.setTitle(getString(R.string.action_about));
 
-      // set values for custom dialog components - text, image and button
+		// set values for custom dialog components - text, image and button
+		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
+		image.setImageResource(R.drawable.logo);
 
-      dialog.show();
+		dialog.show();
+	}
+
+	public void showAppereance() {
+		// Create custom dialog object
+
+		final Dialog dialog = new Dialog(OptionsMenuActivity.this);
+		// Include dialog.xml fill
+
+		dialog.setContentView(R.layout.appereance);
+		isFullScreen = (CheckBox) dialog.findViewById(R.id.checkBoxFullscreen);
+
+		if (isFullScreen.isChecked()) {
+
+			getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+					WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			setContentView(R.layout.activity_search);
+			setContentView(R.layout.settings);
+		} else {
+			// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+			// WindowManager.LayoutParams.FLAG_FULLSCREEN);
+			// setContentView(R.layout.settings);
+		}
+		// Set dialog title
+
+		// set values for custom dialog components - text, image and button
+
+		dialog.show();
 	}
 }
-
-

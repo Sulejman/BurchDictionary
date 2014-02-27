@@ -4,18 +4,18 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     android:paddingLeft="5dp" >
-    
+
     <TextView
         android:id="@+id/textDialog"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/about_text"
         android:textSize="14sp" />
-  
+
     <ImageView
         android:id="@+id/imageDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="6dp" />
-      
+
 </LinearLayout>

@@ -11,11 +11,10 @@
         android:id="@+id/textViewSearchOptions"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
-        android:textColor="#ffffff"
+        android:clickable="true"
         android:text="@string/search_options"
-        android:textSize="30sp"
-        android:clickable="true"/>
-"
+        android:textColor="#ffffff"
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,18 +30,17 @@
             android:text="@string/appereance_options"
             android:textColor="#ffffff"
             android:textSize="30sp" />
-
     </LinearLayout>
 
     <TextView
         android:id="@+id/textViewAboutDictionary"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
+        android:clickable="true"
         android:paddingLeft="2dp"
         android:paddingTop="10dp"
         android:text="@string/action_about"
-        android:textSize="30sp"
         android:textColor="#ffffff"
-        android:clickable="true"/>
+        android:textSize="30sp" />
 
 </LinearLayout>

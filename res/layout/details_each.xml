@@ -5,75 +5,75 @@
     android:orientation="vertical"
     android:paddingBottom="13dp" >
 
-        <TextView
-            android:id="@+id/textViewTurkishPhrase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:maxLines="2"
-            android:paddingLeft="2dp"
-            android:text="TextView"
-            android:textColor="#FF0000"
-            android:textSize="14dp" />
-        
-        <TextView
-            android:id="@+id/textViewTurkishPhraseBosnianPronunciation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:maxLines="2"
-            android:paddingBottom="5dp"
-            android:paddingLeft="2dp"
-            android:text="TextView"
-            android:textColor="#FF0000"
-            android:textSize="14dp" />
+    <TextView
+        android:id="@+id/textViewTurkishPhrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:maxLines="2"
+        android:paddingLeft="2dp"
+        android:text="TextView"
+        android:textColor="#FF0000"
+        android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/textViewBosnianPhrase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:maxLines="2"
-            android:paddingLeft="2dp"
-            android:text="TextView"
-            android:textColor="#0000FF"
-            android:textSize="14dp" />
-        
-        <TextView
-            android:id="@+id/textViewBosnianPhraseTurkishPronunciation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:maxLines="2"
-            android:paddingBottom="5dp"
-            android:paddingLeft="2dp"
-            android:text="TextView"
-            android:textColor="#0000FF"
-            android:textSize="14dp" />
+    <TextView
+        android:id="@+id/textViewTurkishPhraseBosnianPronunciation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:maxLines="2"
+        android:paddingBottom="5dp"
+        android:paddingLeft="2dp"
+        android:text="TextView"
+        android:textColor="#FF0000"
+        android:textSize="14dp" />
 
-        <TextView
-            android:id="@+id/textViewEnglishPhrase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:maxLines="12"
-            android:paddingBottom="5dp"
-            android:paddingLeft="2dp"
-            android:text="TextView"
-            android:textColor="#000000"
-            android:textSize="14dp" />
-        
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textViewBosnianPhrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:maxLines="2"
+        android:paddingLeft="2dp"
+        android:text="TextView"
+        android:textColor="#0000FF"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/textViewBosnianPhraseTurkishPronunciation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:maxLines="2"
+        android:paddingBottom="5dp"
+        android:paddingLeft="2dp"
+        android:text="TextView"
+        android:textColor="#0000FF"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/textViewEnglishPhrase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:maxLines="12"
+        android:paddingBottom="5dp"
+        android:paddingLeft="2dp"
+        android:text="TextView"
+        android:textColor="#000000"
+        android:textSize="14dp" />
+
+</LinearLayout>
