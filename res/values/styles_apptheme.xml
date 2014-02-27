@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     File created by the Android Action Bar Style Generator
+<!-- File created by the Android Action Bar Style Generator
 
      Copyright (C) 2011 The Android Open Source Project
      Copyright (C) 2012 readyState Software Ltd
@@ -31,8 +30,9 @@
         <item name="actionModeSplitBackground">@drawable/cab_background_bottom_apptheme</item>
         <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Apptheme</item>
 
-        <!-- Light.DarkActionBar specific -->
+                <!-- Light.DarkActionBar specific -->
         <item name="actionBarWidgetTheme">@style/Theme.Apptheme.Widget</item>
+
     </style>
 
     <style name="ActionBar.Solid.Apptheme" parent="@style/Widget.Sherlock.Light.ActionBar.Solid.Inverse">
@@ -46,11 +46,11 @@
         <item name="background">@drawable/ab_transparent_apptheme</item>
         <item name="progressBarStyle">@style/ProgressBar.Apptheme</item>
     </style>
-
-    <style name="PopupMenu.Apptheme" parent="@style/Widget.Sherlock.ListPopupWindow">
-        <item name="android:popupBackground">@drawable/menu_dropdown_panel_apptheme</item>
+	
+    <style name="PopupMenu.Apptheme" parent="@style/Widget.Sherlock.ListPopupWindow">	
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_apptheme</item>	
     </style>
-
+	
     <style name="DropDownListView.Apptheme" parent="@style/Widget.Sherlock.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_apptheme</item>
     </style>
@@ -58,21 +58,21 @@
     <style name="ActionBarTabStyle.Apptheme" parent="@style/Widget.Sherlock.ActionBar.TabView">
         <item name="android:background">@drawable/tab_indicator_ab_apptheme</item>
     </style>
-
+	
     <style name="DropDownNav.Apptheme" parent="@style/Widget.Sherlock.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_apptheme</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_apptheme</item>
         <item name="android:dropDownSelector">@drawable/selectable_background_apptheme</item>
     </style>
-
+    
     <style name="ProgressBar.Apptheme" parent="@style/Widget.Sherlock.ProgressBar.Horizontal">
         <item name="android:progressDrawable">@drawable/progress_horizontal_apptheme</item>
     </style>
-
+    
     <style name="ActionButton.CloseMode.Apptheme" parent="@style/Widget.Sherlock.ActionButton.CloseMode">
         <item name="android:background">@drawable/btn_cab_done_apptheme</item>
     </style>
-
+    
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
     <style name="Theme.Apptheme.Widget" parent="@style/Theme.Sherlock">
         <item name="popupMenuStyle">@style/PopupMenu.Apptheme</item>

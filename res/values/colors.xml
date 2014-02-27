@@ -2,8 +2,8 @@
 <resources>
 
     <color name="background">#f2f2f2</color>
-    <color name="apptheme_main">#7b9c3a</color>
-    <color name="apptheme_secondary">#688333</color>
-    <color name="apptheme_accent">#a3cc50</color>
+    <color name="apptheme_main">#9c3a3a</color>
+    <color name="apptheme_secondary">#803232</color>
+    <color name="apptheme_accent">#ba4646</color>
 
 </resources>
