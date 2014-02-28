@@ -5,5 +5,9 @@
     <color name="apptheme_main">#9c3a3a</color>
     <color name="apptheme_secondary">#803232</color>
     <color name="apptheme_accent">#ba4646</color>
+    <color name="text_turkish">#9c3a3a</color>
+    <color name="text_bosnian">#325380</color>
+    <color name="text_english">#505050</color>
+    <color name="text_secondary">#666666</color>
 
 </resources>
