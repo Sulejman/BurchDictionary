@@ -22,5 +22,6 @@
     <string name="search_options">Search</string>
     <string name="appereance_options">Appereance</string>
     <string name="fullscreen_checkbox">Set Fullscreen</string>
+    <string name="example_sentences">Example Sentences</string>
 
 </resources>
