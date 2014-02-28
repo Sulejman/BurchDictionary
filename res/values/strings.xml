@@ -2,9 +2,12 @@
 <resources>
 
     <string name="app_name">Burch Dictionary</string>
-    <string name="action_about">About Dictionary</string>
-    <string name="search_hint">Search...</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="action_about">About</string>
+    <string name="menu_language">Language</string>
+    <string name="menu_language_turkish">Turkish</string>
+    <string name="menu_language_bosnian">Bosnian</string>
+    <string name="menu_language_english">English</string>
+    <string name="search_hint">Search</string>
     <string name="button_text">CH</string>
     <string name="no_phrases">NO PHRASES FOUND FOR THIS WORD IN DATABASE!!!</string>
     <string name="no_data">No Data Found!</string>
@@ -18,5 +21,6 @@
     <string name="search_options">Search</string>
     <string name="appereance_options">Appereance</string>
     <string name="fullscreen_checkbox">Set Fullscreen</string>
+    <string name="example_sentences">Example Sentences</string>
 
 </resources>

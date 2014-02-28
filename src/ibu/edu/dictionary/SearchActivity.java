@@ -4,33 +4,34 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SearchActivity extends Activity {
+import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.MenuItem.OnActionExpandListener;
+import com.actionbarsherlock.widget.SearchView;
+import com.actionbarsherlock.widget.SearchView.OnQueryTextListener;
 
-	EditText searchText;
+public class SearchActivity extends SherlockActivity {
+
 	Button buttonDetails;
 	ListView wordsList;
 	SQLiteAssetHelper myDBHelper;
@@ -41,28 +42,30 @@ public class SearchActivity extends Activity {
 	ArrayList<Word> wordsEnglish = new ArrayList<Word>();
 	ArrayList<Word> wordsAfterSearch = new ArrayList<Word>();
 	WordAdapter wordAdapter;
-	TextView lang;
 	boolean isFirstEnglish = true, isFirstBosnian = true;
 	long idle_min = 700;
 	long last_text_edit = 0;
 	Handler h = new Handler();
 	boolean already_queried = false;
-	ImageView settings;
+
+	String searchQuery;
+
+	Menu menu;
+
+	String selectedLanguage = "TR";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_search);
+
 		words.clear();
 		wordsAfterSearch.clear();
 
 		wordsList = (ListView) findViewById(R.id.listViewMain);
 		wordsList.setFastScrollEnabled(true);
-		lang = (TextView) findViewById(R.id.textViewLanguage);
-		searchText = (EditText) findViewById(R.id.editText1);
-		settings = (ImageView) findViewById(R.id.imageSettings);
 		myDBHelper = new SQLiteAssetHelper(this.getApplicationContext());
+
 		try {
 			myDBHelper.createDataBase();
 		} catch (IOException ioe) {
@@ -75,124 +78,15 @@ public class SearchActivity extends Activity {
 			throw sqle;
 		}
 
-		WordAdapter.stringLanguage = lang.getText().toString();
+		WordAdapter.stringLanguage = selectedLanguage;
 		words = showList();
 		final WordAdapter wordAdapter = new WordAdapter(SearchActivity.this,
-				words, lang.getText().toString());
+				words, selectedLanguage);
 		wordsList.setAdapter(wordAdapter);
 		wordsBosnian = showList();
 		Collections.sort(wordsBosnian, new Word.OrderByBosnian());
 		wordsEnglish = showList();
 		Collections.sort(wordsEnglish, new Word.OrderByEnglish());
-
-		settings.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				showAbout();
-			}
-
-		});
-
-		lang.setOnClickListener(new TextView.OnClickListener() {
-			@SuppressLint("NewApi")
-			public void onClick(View v) {
-
-				if (lang.getText().equals("TR")) {
-					lang.setText("BS");
-					WordAdapter.stringLanguage = "BS";
-					Log.d("Sortion of section letters",
-							"Static variable updated to: "
-									+ WordAdapter.stringLanguage);
-					if (searchText.getText().toString().length() == 0) {
-						final WordAdapter wordAdapterBosnian = new WordAdapter(
-								SearchActivity.this, wordsBosnian, lang
-										.getText().toString());
-						wordsList.setAdapter(wordAdapterBosnian);
-						wordsList.setFastScrollEnabled(false);
-						wordsList.setFastScrollEnabled(true);
-
-					} else {
-						wordsList.setFastScrollEnabled(false);
-						wordsAfterSearch = showListAfterSearchPerformed();
-						Collections.sort(wordsAfterSearch,
-								new Word.OrderByBosnian());
-						final WordAdapter wordAdapterSearch = new WordAdapter(
-								SearchActivity.this, wordsAfterSearch, lang
-										.getText().toString());
-						wordsList.setAdapter(wordAdapterSearch);
-					}
-				}
-
-				else if (lang.getText().equals("BS")) {
-					lang.setText("EN");
-					WordAdapter.stringLanguage = "EN";
-					Log.d("Sortion of section letters",
-							"Static variable updated to: "
-									+ WordAdapter.stringLanguage);
-					if (searchText.getText().toString().length() == 0) {
-						final WordAdapter wordAdapterEnglish = new WordAdapter(
-								SearchActivity.this, wordsEnglish, lang
-										.getText().toString());
-						wordsList.setAdapter(wordAdapterEnglish);
-						wordsList.setFastScrollEnabled(false);
-						wordsList.setFastScrollEnabled(true);
-
-					} else {
-						wordsList.setFastScrollEnabled(false);
-						wordsAfterSearch = showListAfterSearchPerformed();
-						Collections.sort(wordsAfterSearch,
-								new Word.OrderByEnglish());
-						final WordAdapter wordAdapterSearch = new WordAdapter(
-								SearchActivity.this, wordsAfterSearch, lang
-										.getText().toString());
-						wordsList.setAdapter(wordAdapterSearch);
-					}
-				} else if (lang.getText().equals("EN")) {
-					lang.setText("TR");
-					WordAdapter.stringLanguage = "TR";
-
-					if (searchText.getText().toString().length() == 0) {
-						final WordAdapter wordAdapter = new WordAdapter(
-								SearchActivity.this, words, lang.getText()
-										.toString());
-						wordsList.setAdapter(wordAdapter);
-						wordsList.setFastScrollEnabled(false);
-						wordsList.setFastScrollEnabled(true);
-					} else {
-						wordsList.setFastScrollEnabled(false);
-						final WordAdapter wordAdapterSearch = new WordAdapter(
-								SearchActivity.this,
-								showListAfterSearchPerformed(), lang.getText()
-										.toString());
-						wordsList.setAdapter(wordAdapterSearch);
-					}
-				}
-
-			}
-		});
-
-		searchText.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				// Ignore if don't need
-			}
-
-			@Override
-			public void afterTextChanged(Editable arg0) {
-
-				last_text_edit = System.currentTimeMillis();
-				h.postDelayed(input_finish_checker, idle_min);
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-					int arg2, int arg3) {
-			}
-		});
 
 		wordsList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -201,34 +95,40 @@ public class SearchActivity extends Activity {
 						((TextView) view).getText(), Toast.LENGTH_SHORT).show();
 			}
 		});
+
+	}
+
+	private void updateSearch(String query) {
+		searchQuery = query;
+
+		last_text_edit = System.currentTimeMillis();
+		h.postDelayed(input_finish_checker, idle_min);
 	}
 
 	public void query_dictionary_after_text_changed() {
 
-		if (lang.getText().equals("TR")) {
-			if (searchText.getText().toString().length() == 0) {
+		if (selectedLanguage.equals("TR")) {
+			if (searchQuery.length() == 0) {
 				final WordAdapter wordAdapter = new WordAdapter(
-						SearchActivity.this, words, lang.getText().toString());
+						SearchActivity.this, words, selectedLanguage);
 				wordsList.setAdapter(wordAdapter);
 				wordsList.setFastScrollEnabled(true);
 			} else
 				wordsAfterSearch = showListAfterSearchPerformed();
-		} else if (lang.getText().equals("BS")) {
-			if (searchText.getText().toString().length() == 0) {
+		} else if (selectedLanguage.equals("BS")) {
+			if (searchQuery.length() == 0) {
 				final WordAdapter wordAdapterBosnian = new WordAdapter(
-						SearchActivity.this, wordsBosnian, lang.getText()
-								.toString());
+						SearchActivity.this, wordsBosnian, selectedLanguage);
 				wordsList.setAdapter(wordAdapterBosnian);
 				wordsList.setFastScrollEnabled(true);
 			} else {
 				wordsAfterSearch = showListAfterSearchPerformed();
 				Collections.sort(wordsAfterSearch, new Word.OrderByBosnian());
 			}
-		} else if (lang.getText().equals("EN")) {
-			if (searchText.getText().toString().length() == 0) {
+		} else if (selectedLanguage.equals("EN")) {
+			if (searchQuery.length() == 0) {
 				final WordAdapter wordAdapterEnglish = new WordAdapter(
-						SearchActivity.this, wordsEnglish, lang.getText()
-								.toString());
+						SearchActivity.this, wordsEnglish, selectedLanguage);
 				wordsList.setAdapter(wordAdapterEnglish);
 				wordsList.setFastScrollEnabled(true);
 			} else {
@@ -237,11 +137,10 @@ public class SearchActivity extends Activity {
 			}
 		}
 
-		if (searchText.getText().toString().length() != 0) {
+		if (searchQuery.length() != 0) {
 			wordsList.setFastScrollEnabled(false);
 			final WordAdapter wordAdapterSearch = new WordAdapter(
-					SearchActivity.this, wordsAfterSearch, lang.getText()
-							.toString());
+					SearchActivity.this, wordsAfterSearch, selectedLanguage);
 			wordsList.setAdapter(wordAdapterSearch);
 		}
 
@@ -334,11 +233,11 @@ public class SearchActivity extends Activity {
 		ArrayList<Word> words = new ArrayList<Word>();
 		words.clear();
 		Cursor c1;
-		lang = (TextView) findViewById(R.id.textViewLanguage);
+
 		String tr = null, bs = null, en = null, tr_temp = null, bs_P = null, tr_P = null;
 
-		if (lang.getText().equals("TR")) {
-			String searchString = searchText.getText().toString();
+		if (selectedLanguage.equals("TR")) {
+			String searchString = searchQuery;
 			String newSearchString = searchString.replace("i", "İ");
 			c1 = myDBHelper.getSearchTurkish(newSearchString.toUpperCase()); // This
 																				// code
@@ -387,10 +286,14 @@ public class SearchActivity extends Activity {
 			c1.close();
 		}
 
-		else if (lang.getText().equals("BS")) {
-			c1 = myDBHelper.getSearchBosnian(searchText.getText().toString()
-					.toUpperCase()); // This code works, ignore warning about
-										// locale
+		else if (selectedLanguage.equals("BS")) {
+			c1 = myDBHelper.getSearchBosnian(searchQuery.toUpperCase()); // This
+																			// code
+																			// works,
+																			// ignore
+																			// warning
+																			// about
+																			// locale
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
@@ -430,10 +333,14 @@ public class SearchActivity extends Activity {
 			c1.close();
 		}
 
-		else if (lang.getText().equals("EN")) {
-			c1 = myDBHelper.getSearchEnglish(searchText.getText().toString()
-					.toUpperCase()); // This code works, ignore warning about
-										// locale
+		else if (selectedLanguage.equals("EN")) {
+			c1 = myDBHelper.getSearchEnglish(searchQuery.toUpperCase()); // This
+																			// code
+																			// works,
+																			// ignore
+																			// warning
+																			// about
+																			// locale
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
@@ -477,20 +384,145 @@ public class SearchActivity extends Activity {
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		// getMenuInflater().inflate(R.menu.search, menu);
-		return true;
+	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
+		getSupportMenuInflater().inflate(R.menu.search, menu);
+		this.menu = menu;
+
+		MenuItem seachItem = menu.findItem(R.id.action_search);
+
+		// Associate searchable configuration with the SearchView
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+				.getActionView();
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
+
+		searchView.setOnQueryTextListener(new OnQueryTextListener() {
+
+			@Override
+			public boolean onQueryTextSubmit(String query) {
+				updateSearch(query);
+
+				// hide keyboard
+				InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				inputManager.hideSoftInputFromWindow(getCurrentFocus()
+						.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+				return true;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String newText) {
+				updateSearch(newText);
+				return false;
+			}
+
+		});
+
+		seachItem.setOnActionExpandListener(new OnActionExpandListener() {
+
+			@Override
+			public boolean onMenuItemActionExpand(MenuItem item) {
+				return true;
+			}
+
+			@Override
+			public boolean onMenuItemActionCollapse(MenuItem item) {
+				updateSearch("");
+				return true;
+			}
+		});
+
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle item selection
+	public boolean onOptionsItemSelected(
+			com.actionbarsherlock.view.MenuItem item) {
+
+		com.actionbarsherlock.view.MenuItem languageItem = menu
+				.findItem(R.id.menu_language);
+
 		switch (item.getItemId()) {
 		case R.id.action_about:
 			showAbout();
-		default:
-			return super.onOptionsItemSelected(item);
+			break;
+		case R.id.languageTurkish:
+			switchToTurkish();
+			languageItem.setIcon(R.drawable.ic_action_tr);
+			break;
+		case R.id.languageBosnian:
+			switchToBosnian();
+			languageItem.setIcon(R.drawable.ic_action_bs);
+			break;
+		case R.id.languageEnglish:
+			switchToEnglish();
+			languageItem.setIcon(R.drawable.ic_action_en);
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	public void switchToTurkish() {
+		selectedLanguage = "TR";
+
+		WordAdapter.stringLanguage = "TR";
+
+		if (searchQuery.length() == 0) {
+			final WordAdapter wordAdapter = new WordAdapter(
+					SearchActivity.this, words, selectedLanguage);
+			wordsList.setAdapter(wordAdapter);
+			wordsList.setFastScrollEnabled(false);
+			wordsList.setFastScrollEnabled(true);
+		} else {
+			wordsList.setFastScrollEnabled(false);
+			final WordAdapter wordAdapterSearch = new WordAdapter(
+					SearchActivity.this, showListAfterSearchPerformed(),
+					selectedLanguage);
+			wordsList.setAdapter(wordAdapterSearch);
+		}
+	}
+
+	public void switchToBosnian() {
+		selectedLanguage = "BS";
+
+		WordAdapter.stringLanguage = "BS";
+		Log.d("Sortion of section letters", "Static variable updated to: "
+				+ WordAdapter.stringLanguage);
+		if (searchQuery.length() == 0) {
+			final WordAdapter wordAdapterBosnian = new WordAdapter(
+					SearchActivity.this, wordsBosnian, selectedLanguage);
+			wordsList.setAdapter(wordAdapterBosnian);
+			wordsList.setFastScrollEnabled(false);
+			wordsList.setFastScrollEnabled(true);
+		} else {
+			wordsList.setFastScrollEnabled(false);
+			wordsAfterSearch = showListAfterSearchPerformed();
+			Collections.sort(wordsAfterSearch, new Word.OrderByBosnian());
+			final WordAdapter wordAdapterSearch = new WordAdapter(
+					SearchActivity.this, wordsAfterSearch, selectedLanguage);
+			wordsList.setAdapter(wordAdapterSearch);
+		}
+	}
+
+	public void switchToEnglish() {
+		selectedLanguage = "EN";
+
+		WordAdapter.stringLanguage = "EN";
+		Log.d("Sortion of section letters", "Static variable updated to: "
+				+ WordAdapter.stringLanguage);
+		if (searchQuery.length() == 0) {
+			final WordAdapter wordAdapterEnglish = new WordAdapter(
+					SearchActivity.this, wordsEnglish, selectedLanguage);
+			wordsList.setAdapter(wordAdapterEnglish);
+			wordsList.setFastScrollEnabled(false);
+			wordsList.setFastScrollEnabled(true);
+		} else {
+			wordsList.setFastScrollEnabled(false);
+			wordsAfterSearch = showListAfterSearchPerformed();
+			Collections.sort(wordsAfterSearch, new Word.OrderByEnglish());
+			final WordAdapter wordAdapterSearch = new WordAdapter(
+					SearchActivity.this, wordsAfterSearch, selectedLanguage);
+			wordsList.setAdapter(wordAdapterSearch);
 		}
 	}
 

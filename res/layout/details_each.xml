@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/details_item_content_holder"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="13dp" >
+    android:padding="4dp" >
 
     <TextView
         android:id="@+id/textViewTurkishPhrase"
@@ -13,10 +14,9 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:maxLines="2"
-        android:paddingLeft="2dp"
         android:text="TextView"
-        android:textColor="#FF0000"
-        android:textSize="14dp" />
+        android:textColor="@color/text_turkish"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textViewTurkishPhraseBosnianPronunciation"
@@ -27,11 +27,16 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:maxLines="2"
-        android:paddingBottom="5dp"
-        android:paddingLeft="2dp"
         android:text="TextView"
-        android:textColor="#FF0000"
-        android:textSize="14dp" />
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/list_separator" />
 
     <TextView
         android:id="@+id/textViewBosnianPhrase"
@@ -42,10 +47,9 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:maxLines="2"
-        android:paddingLeft="2dp"
         android:text="TextView"
-        android:textColor="#0000FF"
-        android:textSize="14dp" />
+        android:textColor="@color/text_bosnian"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textViewBosnianPhraseTurkishPronunciation"
@@ -56,11 +60,16 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:maxLines="2"
-        android:paddingBottom="5dp"
-        android:paddingLeft="2dp"
         android:text="TextView"
-        android:textColor="#0000FF"
-        android:textSize="14dp" />
+        android:textColor="@color/text_secondary"
+        android:textSize="12sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/list_separator" />
 
     <TextView
         android:id="@+id/textViewEnglishPhrase"
@@ -70,10 +79,18 @@
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:maxLines="12"
-        android:paddingBottom="5dp"
-        android:paddingLeft="2dp"
         android:text="TextView"
-        android:textColor="#000000"
-        android:textSize="14dp" />
+        android:textColor="@color/text_english"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="4dp"
+        android:layout_marginTop="8dp"
+        android:text="●●●"
+        android:textColor="@color/text_gray_title"
+        android:textSize="16sp" />
 
 </LinearLayout>
