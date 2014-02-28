@@ -5,19 +5,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import android.app.Dialog;
+import android.app.SearchManager;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,10 +25,13 @@ import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.MenuItem.OnActionExpandListener;
+import com.actionbarsherlock.widget.SearchView;
+import com.actionbarsherlock.widget.SearchView.OnQueryTextListener;
 
 public class SearchActivity extends SherlockActivity {
 
-	EditText searchText;
 	Button buttonDetails;
 	ListView wordsList;
 	SQLiteAssetHelper myDBHelper;
@@ -45,6 +48,8 @@ public class SearchActivity extends SherlockActivity {
 	Handler h = new Handler();
 	boolean already_queried = false;
 
+	String searchQuery;
+
 	Menu menu;
 
 	String selectedLanguage = "TR";
@@ -59,7 +64,6 @@ public class SearchActivity extends SherlockActivity {
 
 		wordsList = (ListView) findViewById(R.id.listViewMain);
 		wordsList.setFastScrollEnabled(true);
-		searchText = (EditText) findViewById(R.id.editText1);
 		myDBHelper = new SQLiteAssetHelper(this.getApplicationContext());
 
 		try {
@@ -84,28 +88,6 @@ public class SearchActivity extends SherlockActivity {
 		wordsEnglish = showList();
 		Collections.sort(wordsEnglish, new Word.OrderByEnglish());
 
-		searchText.addTextChangedListener(new TextWatcher() {
-
-			@Override
-			public void onTextChanged(CharSequence arg0, int arg1, int arg2,
-					int arg3) {
-				// Ignore if don't need
-			}
-
-			@Override
-			public void afterTextChanged(Editable arg0) {
-
-				last_text_edit = System.currentTimeMillis();
-				h.postDelayed(input_finish_checker, idle_min);
-
-			}
-
-			@Override
-			public void beforeTextChanged(CharSequence arg0, int arg1,
-					int arg2, int arg3) {
-			}
-		});
-
 		wordsList.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -113,12 +95,20 @@ public class SearchActivity extends SherlockActivity {
 						((TextView) view).getText(), Toast.LENGTH_SHORT).show();
 			}
 		});
+
+	}
+
+	private void updateSearch(String query) {
+		searchQuery = query;
+
+		last_text_edit = System.currentTimeMillis();
+		h.postDelayed(input_finish_checker, idle_min);
 	}
 
 	public void query_dictionary_after_text_changed() {
 
 		if (selectedLanguage.equals("TR")) {
-			if (searchText.getText().toString().length() == 0) {
+			if (searchQuery.length() == 0) {
 				final WordAdapter wordAdapter = new WordAdapter(
 						SearchActivity.this, words, selectedLanguage);
 				wordsList.setAdapter(wordAdapter);
@@ -126,7 +116,7 @@ public class SearchActivity extends SherlockActivity {
 			} else
 				wordsAfterSearch = showListAfterSearchPerformed();
 		} else if (selectedLanguage.equals("BS")) {
-			if (searchText.getText().toString().length() == 0) {
+			if (searchQuery.length() == 0) {
 				final WordAdapter wordAdapterBosnian = new WordAdapter(
 						SearchActivity.this, wordsBosnian, selectedLanguage);
 				wordsList.setAdapter(wordAdapterBosnian);
@@ -136,7 +126,7 @@ public class SearchActivity extends SherlockActivity {
 				Collections.sort(wordsAfterSearch, new Word.OrderByBosnian());
 			}
 		} else if (selectedLanguage.equals("EN")) {
-			if (searchText.getText().toString().length() == 0) {
+			if (searchQuery.length() == 0) {
 				final WordAdapter wordAdapterEnglish = new WordAdapter(
 						SearchActivity.this, wordsEnglish, selectedLanguage);
 				wordsList.setAdapter(wordAdapterEnglish);
@@ -147,7 +137,7 @@ public class SearchActivity extends SherlockActivity {
 			}
 		}
 
-		if (searchText.getText().toString().length() != 0) {
+		if (searchQuery.length() != 0) {
 			wordsList.setFastScrollEnabled(false);
 			final WordAdapter wordAdapterSearch = new WordAdapter(
 					SearchActivity.this, wordsAfterSearch, selectedLanguage);
@@ -247,7 +237,7 @@ public class SearchActivity extends SherlockActivity {
 		String tr = null, bs = null, en = null, tr_temp = null, bs_P = null, tr_P = null;
 
 		if (selectedLanguage.equals("TR")) {
-			String searchString = searchText.getText().toString();
+			String searchString = searchQuery;
 			String newSearchString = searchString.replace("i", "İ");
 			c1 = myDBHelper.getSearchTurkish(newSearchString.toUpperCase()); // This
 																				// code
@@ -297,9 +287,13 @@ public class SearchActivity extends SherlockActivity {
 		}
 
 		else if (selectedLanguage.equals("BS")) {
-			c1 = myDBHelper.getSearchBosnian(searchText.getText().toString()
-					.toUpperCase()); // This code works, ignore warning about
-										// locale
+			c1 = myDBHelper.getSearchBosnian(searchQuery.toUpperCase()); // This
+																			// code
+																			// works,
+																			// ignore
+																			// warning
+																			// about
+																			// locale
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
@@ -340,9 +334,13 @@ public class SearchActivity extends SherlockActivity {
 		}
 
 		else if (selectedLanguage.equals("EN")) {
-			c1 = myDBHelper.getSearchEnglish(searchText.getText().toString()
-					.toUpperCase()); // This code works, ignore warning about
-										// locale
+			c1 = myDBHelper.getSearchEnglish(searchQuery.toUpperCase()); // This
+																			// code
+																			// works,
+																			// ignore
+																			// warning
+																			// about
+																			// locale
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
@@ -389,7 +387,52 @@ public class SearchActivity extends SherlockActivity {
 	public boolean onCreateOptionsMenu(com.actionbarsherlock.view.Menu menu) {
 		getSupportMenuInflater().inflate(R.menu.search, menu);
 		this.menu = menu;
-		return true;
+
+		MenuItem seachItem = menu.findItem(R.id.action_search);
+
+		// Associate searchable configuration with the SearchView
+		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+				.getActionView();
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
+
+		searchView.setOnQueryTextListener(new OnQueryTextListener() {
+
+			@Override
+			public boolean onQueryTextSubmit(String query) {
+				updateSearch(query);
+
+				// hide keyboard
+				InputMethodManager inputManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+				inputManager.hideSoftInputFromWindow(getCurrentFocus()
+						.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+				return true;
+			}
+
+			@Override
+			public boolean onQueryTextChange(String newText) {
+				updateSearch(newText);
+				return false;
+			}
+
+		});
+
+		seachItem.setOnActionExpandListener(new OnActionExpandListener() {
+
+			@Override
+			public boolean onMenuItemActionExpand(MenuItem item) {
+				return true;
+			}
+
+			@Override
+			public boolean onMenuItemActionCollapse(MenuItem item) {
+				updateSearch("");
+				return true;
+			}
+		});
+
+		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
@@ -424,7 +467,7 @@ public class SearchActivity extends SherlockActivity {
 
 		WordAdapter.stringLanguage = "TR";
 
-		if (searchText.getText().toString().length() == 0) {
+		if (searchQuery.length() == 0) {
 			final WordAdapter wordAdapter = new WordAdapter(
 					SearchActivity.this, words, selectedLanguage);
 			wordsList.setAdapter(wordAdapter);
@@ -445,7 +488,7 @@ public class SearchActivity extends SherlockActivity {
 		WordAdapter.stringLanguage = "BS";
 		Log.d("Sortion of section letters", "Static variable updated to: "
 				+ WordAdapter.stringLanguage);
-		if (searchText.getText().toString().length() == 0) {
+		if (searchQuery.length() == 0) {
 			final WordAdapter wordAdapterBosnian = new WordAdapter(
 					SearchActivity.this, wordsBosnian, selectedLanguage);
 			wordsList.setAdapter(wordAdapterBosnian);
@@ -467,7 +510,7 @@ public class SearchActivity extends SherlockActivity {
 		WordAdapter.stringLanguage = "EN";
 		Log.d("Sortion of section letters", "Static variable updated to: "
 				+ WordAdapter.stringLanguage);
-		if (searchText.getText().toString().length() == 0) {
+		if (searchQuery.length() == 0) {
 			final WordAdapter wordAdapterEnglish = new WordAdapter(
 					SearchActivity.this, wordsEnglish, selectedLanguage);
 			wordsList.setAdapter(wordAdapterEnglish);
