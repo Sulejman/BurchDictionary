@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.actionbarsherlock.app.SherlockActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,7 +14,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ShowDetailsActivity extends Activity {
+public class ShowDetailsActivity extends SherlockActivity {
 	TextView bosnian;
 	TextView turkish;
 	TextView english;
@@ -30,6 +32,8 @@ public class ShowDetailsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detailed_word);
+
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 		wordsList = (ListView) findViewById(R.id.listView2);
 		myDBHelper = new SQLiteAssetHelper(this.getApplicationContext());
@@ -66,6 +70,12 @@ public class ShowDetailsActivity extends Activity {
 		turkishPr.setText("["
 				+ c.getString(c.getColumnIndex("TURKISH_PRONUNCIATION")) + "]");
 		c.close();
+	}
+
+	@Override
+	public boolean onNavigateUp() {
+		finish();
+		return false;
 	}
 
 	private List<Word> showList() {
