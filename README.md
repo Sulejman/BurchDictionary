@@ -1,10 +1,24 @@
-This is the first version of trilingual dictionary Bosnian-Turkish-English. It uses existing sqlite database.
-For questions send email to: sulejmansarajlija@gmail.com
+Turkish-Bosnian-English Dictionary
+==================================
 
-Please leave the comments on code you edit. Sorry for me, I was overwhelmed with school stuff and couldn't do it.
+A beautiful, holo-styled dictionary app developed by the Burch University that does translation between Turkish, Bosnian and English languages.
 
-Here is the link of dictionary on PlayStore: https://play.google.com/store/apps/details?id=ibu.edu.dictionary
+![dict_featured](https://f.cloud.github.com/assets/2550945/2296834/23f41abc-a0a4-11e3-8cf2-82ccf9e30c13.png)
 
-If you make any changes sum them up in this README file bellow the line:
+<a href="https://play.google.com/store/apps/details?id=ibu.edu.dictionary">
+  <img alt="Get it on Google Play"
+       src="https://developer.android.com/images/brand/en_generic_rgb_wo_60.png" />
+</a>
 
-__________________________________________________________________________________________
+
+____________________________________________________________
+
+Third-Party Components
+----------------------
+
+- <a href="http://actionbarsherlock.com/">**ActionBarSherlock**</a> by Jake Wharton 
+
+
+License
+-------
+
