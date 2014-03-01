@@ -12,7 +12,7 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:clickable="true"
-        android:text="@string/search_options"
+        android:text="@string/options_search_options"
         android:textColor="#ffffff"
         android:textSize="30sp" />
 
@@ -27,7 +27,7 @@
             android:clickable="true"
             android:paddingLeft="2dp"
             android:paddingTop="4dp"
-            android:text="@string/appereance_options"
+            android:text="@string/options_appereance_options"
             android:textColor="#ffffff"
             android:textSize="30sp" />
     </LinearLayout>

@@ -88,7 +88,7 @@ public class PhraseAdapter extends BaseAdapter {
 			}
 		} catch (NullPointerException e) {
 			holder.textViewTrPhBsPr.setText(mContext.getResources().getString(
-					R.string.no_phrases));
+					R.string.content_no_phrases));
 			holder.textViewBsPhTrPr.setText(" ");
 		}
 

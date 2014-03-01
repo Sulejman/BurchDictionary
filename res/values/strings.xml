@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- App related Strings -->
     <string name="app_name">Burch Dictionary</string>
     <string name="app_version">1.1</string>
+
+    <!-- Action bar related Strings -->
     <string name="action_about">About</string>
     <string name="menu_language">Language</string>
     <string name="menu_language_turkish">Turkish</string>
     <string name="menu_language_bosnian">Bosnian</string>
     <string name="menu_language_english">English</string>
     <string name="search_hint">Search</string>
-    <string name="button_text">CH</string>
-    <string name="no_phrases">NO PHRASES FOUND FOR THIS WORD IN DATABASE!!!</string>
-    <string name="no_data">No Data Found!</string>
-    <string name="about_text">\nTurkish-Bosnian-English Dictionary v1.0
-        							\n\nThis is trilingual dictionary that contains some useful phrases too.
-        					 You can search any of these three languages :
-        					  Bosnian, Turkish or English.
-        					   \n \nThis is project of International Burch University in Sarajevo (Bosnia and Herzegovina)
-        						\n\nFor details about project:\nmarslan@ibu.edu.ba
-        						\n\nDeveloper email(report bugs here):\nsulejmansarajlija@gmail.com\n </string>
-    <string name="search_options">Search</string>
-    <string name="appereance_options">Appereance</string>
-    <string name="fullscreen_checkbox">Set Fullscreen</string>
-    <string name="example_sentences">Example Sentences</string>
+
+    <!-- Content Strings -->
+    <string name="content_no_phrases">NO PHRASES FOUND FOR THIS WORD IN DATABASE!!!</string>
+    <string name="content_example_sentences">Example Sentences</string>
+
+    <!-- Settings Activity Strings -->
+    <string name="options_search_options">Search</string>
+    <string name="options_appereance_options">Appereance</string>
+    <string name="options_fullscreen_checkbox">Set Fullscreen</string>
 
     <!-- About Activity Strings -->
     <string name="about_app">A beautiful, holo-styled dictionary app developed by the Burch University that does translation between Turkish, Bosnian and English languages.</string>
     <string name="about_project_title">The Project</string>
     <string name="about_project">Burch Dictionary project is led by the <a href="http://ibu.edu.ba">Burch University</a>. The application uses its own database put together by the students of the Burch University.</string>
-
-    <!-- About Activity Developer Strings -->
     <string name="about_devs_title">Developers</string>
     <string name="about_devs_project_lead_title">Project Lead</string>
     <string name="about_devs_project_lead_mustafa">Mustafa Arslan</string>

@@ -1,17 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- App related Strings -->
     <string name="app_name">Burch Sözlük</string>
-    <string name="search_hint">Ara...</string>
+
+    <!-- Action bar related Strings -->
     <string name="action_about">Hakkında</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="button_text">CH</string>
-    <string name="no_data">No Data Found!</string>
-    <string name="no_phrases">Bu sozcuk veya anlam veri tabaninda bulunmamaktadir!!!</string>
-    <string name="about_text">\nSözlük Türkçe-İngilizce-Boşnakca v1.0
-        							\n\nBu üç-dil arası çeviri yapan bir uygulamadır. Boşnakça, Türkçe ve İngilizce dilleri arasında çeviri yapabilirsiniz.
-        					   \n \nBu uygulama Uluslararası Burç Üniversitesinin bir projesidir. (Bosnia and Herzegovina)
-        						\n\nProje hakkında daha fazla bilgi için: \nmarslan@ibu.edu.ba
-        						\n\nGeliştirici ile irtibata geçmek için (hata raporları, sorun bildirme, ve görüşler buraya): :\nsulejmansarajlija@gmail.com\n </string>
+    <string name="menu_language">Dil</string>
+    <string name="menu_language_turkish">Türkçe</string>
+    <string name="menu_language_bosnian">Boşnakça</string>
+    <string name="menu_language_english">İngilizce</string>
+    <string name="search_hint">Ara...</string>
+
+    <!-- Content Strings -->
+    <string name="content_no_phrases">Bu sozcuk veya anlam veri tabaninda bulunmamaktadir!!!</string>
+    <string name="content_example_sentences">Örnek Cümleler</string>
+
+    <!-- Settings Activity Strings -->
+    <string name="options_search_options">Ara</string>
+    <string name="options_appereance_options">Görünüm</string>
+    <string name="options_fullscreen_checkbox">Tam ekran ayarla</string>
+
+    <!-- About Activity Strings -->
+    <string name="about_app">Burç Üniversitesi tarafında geliştirilen, Türkçe, Boşnakça ve İngilizce dilleri arasında tercüme yapan, güzel kullanıcı arayüzlü sözlük uygulaması.</string>
+    <string name="about_project_title">Proje</string>
+    <string name="about_project">Burç Sözlük projesi <a href="http://ibu.edu.ba">Burç Üniversitesi</a> tarafından geliştiriliyor. Sözlük, Burç Üniversitresinin öğrencilerinin geliştirdiği veri tabanını kullanıyor.</string>
+    <string name="about_devs_title">Geliştiriciler</string>
+    <string name="about_devs_project_lead_title">Proje Koordinatörü</string>
+    <string name="about_devs_app_title">Uygulama</string>
+    <string name="about_devs_app_desc">Sınavlarına çalışmak yerine bu uygulama üzerinde çalışan insanlar</string>
+    <string name="about_devs_app_sulejman_info">Asıl geliştirici bu eleman. Uygulamanın temelini o yazdı.</string>
+    <string name="about_devs_app_ihsan_info">Ufak özellikler adamı. Ufak, detay özellikler üzerinde çalışır. Ha, bir de yeni arayüzü o tasarlamış bulunmaktadır.</string>
+    <string name="about_devs_web_title">Web Sitesi</string>
+    <string name="about_devs_web_desc">Bu sözlüğün <a href="http://dictionary.ibu.edu.ba">online versiyonunu</a> görmüş müydünüz? İşte onu bu arkadaş hazırladı!</string>
+    <string name="about_devs_web_dzenis_info"></string>
+    <string name="about_devs_database_title">Verı Tabanı</string>
+    <string name="about_devs_database_desc">Tabi, bu sözlükteki kelimeler gökten inmedi! Birileri bu kelimeleri derledi.</string>
+    <string name="about_devs_database_lamija_info"></string>
+    <string name="about_devs_database_mersima_info"></string>
+    <string name="about_open_source_title">Açık Kaynak!</string>
+    <string name="about_open_source_desc">Bu uygulamanın kaynak kodu açık, evet! Uygulama BSD lisanslı ve katkılara da herzaman açığız!</string>
+    <string name="about_open_source_github"><a href="https://github.com/Sulejman/DictionaryTurkish-English-Bosnian">Burç Sözlük Github\'da</a></string>
+    <string name="about_contact_title">İrtibat</string>
+    <string name="about_contact_desc">Tavsiyeniz mi var? Hata mı buldunuz? Sesinizi duyurun! Ama lütfen, \"Naber?\" yazmayın!</string>
+    <string name="about_libraries_title">Açık Kaynaklı Bileşenler</string>
+    <string name="about_libraries_desc">Burç Sözlük, JakeWharton\'ın <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a> lisanslı <a href="http://actionbarsherlock.com/">ActionBarSherlock</a> isimli kütüphanesini kullanmaktadır.</string>
 
 </resources>

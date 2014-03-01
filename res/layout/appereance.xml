@@ -8,6 +8,6 @@
         android:id="@+id/checkBoxFullscreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fullscreen_checkbox" />
+        android:text="@string/options_fullscreen_checkbox" />
 
 </LinearLayout>
