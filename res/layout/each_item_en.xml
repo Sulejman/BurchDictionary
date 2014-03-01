@@ -28,7 +28,7 @@
                 android:maxLines="1"
                 android:text="TextView"
                 android:textColor="@color/text_english"
-                android:textSize="23sp"
+                android:textSize="17sp"
                  />
         </LinearLayout>
 
