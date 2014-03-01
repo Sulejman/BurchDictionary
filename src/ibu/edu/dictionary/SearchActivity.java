@@ -48,7 +48,7 @@ public class SearchActivity extends SherlockActivity {
 	Handler h = new Handler();
 	boolean already_queried = false;
 
-	String searchQuery;
+	String searchQuery = "";
 
 	Menu menu;
 
