@@ -27,7 +27,7 @@
                 android:maxLines="1"
                 android:text="TextView"
                 android:textColor="@color/text_bosnian"
-                android:textSize="23sp" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textViewBsP"
@@ -40,7 +40,7 @@
                 android:maxLines="1"
                 android:text="TextView"
                 android:textColor="@color/text_secondary"
-                android:textSize="20sp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
