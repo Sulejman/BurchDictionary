@@ -7,9 +7,9 @@ import java.util.Collections;
 import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -20,6 +20,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class SearchActivity extends SherlockActivity {
 
 	Button buttonDetails;
 	ListView wordsList;
+	ProgressBar mLoadingBar;
 	SQLiteAssetHelper myDBHelper;
 	int textlength = 0;
 	ArrayList<Word> words = new ArrayList<Word>();
@@ -59,43 +61,7 @@ public class SearchActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 
-		words.clear();
-		wordsAfterSearch.clear();
-
-		wordsList = (ListView) findViewById(R.id.listViewMain);
-		wordsList.setFastScrollEnabled(true);
-		myDBHelper = new SQLiteAssetHelper(this.getApplicationContext());
-
-		try {
-			myDBHelper.createDataBase();
-		} catch (IOException ioe) {
-			throw new Error("Unable to create database");
-		}
-
-		try {
-			myDBHelper.openDataBase();
-		} catch (SQLException sqle) {
-			throw sqle;
-		}
-
-		WordAdapter.stringLanguage = selectedLanguage;
-		words = showList();
-		final WordAdapter wordAdapter = new WordAdapter(SearchActivity.this,
-				words, selectedLanguage);
-		wordsList.setAdapter(wordAdapter);
-		wordsBosnian = showList();
-		Collections.sort(wordsBosnian, new Word.OrderByBosnian());
-		wordsEnglish = showList();
-		Collections.sort(wordsEnglish, new Word.OrderByEnglish());
-
-		wordsList.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Toast.makeText(getApplicationContext(),
-						((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-			}
-		});
-
+		new LoadTask().execute();
 	}
 
 	private void updateSearch(String query) {
@@ -556,4 +522,72 @@ public class SearchActivity extends SherlockActivity {
 		}
 	};
 
+	public class LoadTask extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... arg0) {
+			wordsList = (ListView) findViewById(R.id.listViewMain);
+			myDBHelper = new SQLiteAssetHelper(getApplicationContext());
+
+			clearUp();
+
+			wordsList.setFastScrollEnabled(true);
+
+			try {
+				myDBHelper.createDataBase();
+			} catch (IOException ioe) {
+				throw new Error("Unable to create database");
+			}
+
+			try {
+				myDBHelper.openDataBase();
+			} catch (SQLException sqle) {
+				throw sqle;
+			}
+
+			WordAdapter.stringLanguage = selectedLanguage;
+
+			words = showList();
+
+			SearchActivity.this.runOnUiThread(new Runnable() {
+
+				@Override
+				public void run() {
+					final WordAdapter wordAdapter = new WordAdapter(
+							SearchActivity.this, words, selectedLanguage);
+
+					wordsList.setAdapter(wordAdapter);
+
+					wordsBosnian = showList();
+					Collections.sort(wordsBosnian, new Word.OrderByBosnian());
+
+					wordsEnglish = showList();
+					Collections.sort(wordsEnglish, new Word.OrderByEnglish());
+				}
+			});
+
+			return null;
+		}
+
+		private void clearUp() {
+			words.clear();
+			wordsAfterSearch.clear();
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
+			mLoadingBar = (ProgressBar) findViewById(R.id.search_view_proggress_bar);
+
+			SearchActivity.this.runOnUiThread(new Runnable() {
+
+				@Override
+				public void run() {
+					mLoadingBar.setVisibility(View.GONE);
+					wordsList.setVisibility(View.VISIBLE);
+				}
+			});
+
+		}
+	}
 }
