@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import android.app.Dialog;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.AsyncTask;
@@ -15,14 +15,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -492,18 +487,8 @@ public class SearchActivity extends SherlockActivity {
 	}
 
 	public void showAbout() {
-		// Create custom dialog object
-		final Dialog dialog = new Dialog(SearchActivity.this);
-		// Include dialog.xml file
-		dialog.setContentView(R.layout.about);
-		// Set dialog title
-		dialog.setTitle(getString(R.string.action_about));
-
-		// set values for custom dialog components - text, image and button
-		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
-		image.setImageResource(R.drawable.logo);
-
-		dialog.show();
+		Intent i = new Intent(this, AboutActivity.class);
+		startActivity(i);
 	}
 
 	private Runnable input_finish_checker = new Runnable() {
