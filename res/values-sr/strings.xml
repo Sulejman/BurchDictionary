@@ -3,7 +3,6 @@
 
     <!-- App related Strings -->
     <string name="app_name">Burch Rječnik</string>
-    <string name="app_version">1.1</string>
 
     <!-- Action bar related Strings -->
     <string name="action_about">O Rječniku</string>
@@ -28,25 +27,16 @@
     <string name="about_project">Burch Dictionary project is led by the <a href="http://ibu.edu.ba">Burch University</a>. The application uses its own database put together by the students of the Burch University.</string>
     <string name="about_devs_title">Developers</string>
     <string name="about_devs_project_lead_title">Project Lead</string>
-    <string name="about_devs_project_lead_mustafa">Mustafa Arslan</string>
-    <string name="about_devs_project_lead_mustafa_contact"><a href="mailto:mustafa.arslan@ibu.edu.ba">Email</a></string>
     <string name="about_devs_app_title">Application</string>
     <string name="about_devs_app_desc">People who worked on this app instead of studying for their exams</string>
-    <string name="about_devs_app_sulejman">Sulejman Sarajlija</string>
     <string name="about_devs_app_sulejman_info">This guy is the actual developer. He wrote the code from the ground up.</string>
-    <string name="about_devs_app_sulejman_contact"><a href="mailto:sulejmansarajlija@gmail.com">Email</a>, <a href="https://github.com/Sulejman">Github</a></string>
-    <string name="about_devs_app_ihsan">İhsan Işık</string>
     <string name="about_devs_app_ihsan_info">The small-features guy. He implements small, detail features. Oh, he also happens to have designed the new user interface.</string>
-    <string name="about_devs_app_ihsan_contact"><a href="mailto:x.ihsan@gmail.com">Email</a>, <a href="https://github.com/xiprox">Github</a></string>
     <string name="about_devs_web_title">Website</string>
     <string name="about_devs_web_desc">Have you seen the <a href="http://dictionary.ibu.edu.ba">online version</a> of this dictionary? Well, this is the guy who is behind that!</string>
-    <string name="about_devs_web_dzenis">Dženis Ejupi</string>
     <string name="about_devs_web_dzenis_info"></string>
     <string name="about_devs_database_title">Database</string>
     <string name="about_devs_database_desc">Of course, the vocabulary in this app didn\'t just descend from behind the clouds! Someone sacrificed their time and put them together.</string>
-    <string name="about_devs_database_lamija">Lamija Zukić</string>
     <string name="about_devs_database_lamija_info"></string>
-    <string name="about_devs_database_mersima">Mersima Strika</string>
     <string name="about_devs_database_mersima_info"></string>
     <string name="about_open_source_title">Open Source!</string>
     <string name="about_open_source_desc">This application is open source, yes! It is BSD licensed and contributions are always welcome!</string>
