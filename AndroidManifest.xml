@@ -37,8 +37,7 @@
         </activity>
         <activity
             android:name="ibu.edu.dictionary.AboutActivity"
-            android:parentActivityName="ibu.edu.dictionary.SearchActivity"
-            android:label="@string/action_about" >
+            android:parentActivityName="ibu.edu.dictionary.SearchActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ibu.edu.dictionary.SearchActivity" />
