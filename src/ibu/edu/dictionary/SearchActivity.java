@@ -105,8 +105,7 @@ public class SearchActivity extends SherlockActivity {
 
 		if (searchQuery.length() != 0) {
 			wordsList.setFastScrollEnabled(false);
-			final WordAdapter wordAdapterSearch = new WordAdapter(
-					SearchActivity.this, wordsAfterSearch, selectedLanguage);
+			final WordAdapter wordAdapterSearch = new WordAdapter(SearchActivity.this, wordsAfterSearch, selectedLanguage);
 			wordsList.setAdapter(wordAdapterSearch);
 		}
 
