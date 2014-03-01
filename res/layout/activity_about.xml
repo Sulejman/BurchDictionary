@@ -24,9 +24,10 @@
 
                 <ImageView
                     android:id="@+id/imageView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_launcher" />
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:minWidth="90dp"
+                    android:src="@raw/icon" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
