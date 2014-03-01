@@ -530,7 +530,7 @@ public class SearchActivity extends SherlockActivity {
 
 			clearUp();
 
-			wordsList.setFastScrollEnabled(true);
+			//wordsList.setFastScrollEnabled(true); moved down there
 
 			try {
 				myDBHelper.createDataBase();
@@ -556,7 +556,7 @@ public class SearchActivity extends SherlockActivity {
 							SearchActivity.this, words, selectedLanguage);
 
 					wordsList.setAdapter(wordAdapter);
-
+					wordsList.setFastScrollEnabled(true);// moved from above
 					wordsBosnian = showList();
 					Collections.sort(wordsBosnian, new Word.OrderByBosnian());
 
