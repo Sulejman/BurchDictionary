@@ -247,13 +247,7 @@ public class SearchActivity extends SherlockActivity {
 		}
 
 		else if (selectedLanguage.equals("BS")) {
-			c1 = myDBHelper.getSearchBosnian(searchQuery.toUpperCase()); // This
-																			// code
-																			// works,
-																			// ignore
-																			// warning
-																			// about
-																			// locale
+			c1 = myDBHelper.getSearchBosnian(searchQuery.toUpperCase()); // This code works, ignore warning about locales
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
@@ -294,13 +288,7 @@ public class SearchActivity extends SherlockActivity {
 		}
 
 		else if (selectedLanguage.equals("EN")) {
-			c1 = myDBHelper.getSearchEnglish(searchQuery.toUpperCase()); // This
-																			// code
-																			// works,
-																			// ignore
-																			// warning
-																			// about
-																			// locale
+			c1 = myDBHelper.getSearchEnglish(searchQuery.toUpperCase()); // This code works, ignore warning about locales
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
