@@ -2,6 +2,7 @@ package ibu.edu.dictionary;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -48,18 +49,8 @@ public class OptionsMenuActivity extends Activity {
 	}
 
 	public void showAbout() {
-		// Create custom dialog object
-		final Dialog dialog = new Dialog(OptionsMenuActivity.this);
-		// Include dialog.xml file
-		dialog.setContentView(R.layout.about);
-		// Set dialog title
-		dialog.setTitle(getString(R.string.action_about));
-
-		// set values for custom dialog components - text, image and button
-		ImageView image = (ImageView) dialog.findViewById(R.id.imageDialog);
-		image.setImageResource(R.drawable.logo);
-
-		dialog.show();
+		Intent i = new Intent(this, AboutActivity.class);
+		startActivity(i);
 	}
 
 	public void showAppereance() {
