@@ -21,4 +21,4 @@ Third-Party Components
 
 License
 -------
-
+Burch Dictionary is BSD licensed and contributions are welcome!
