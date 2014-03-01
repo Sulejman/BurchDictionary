@@ -6,53 +6,44 @@
 
     <!-- Action bar related Strings -->
     <string name="action_about">Hakkında</string>
-    <string name="menu_language">Language</string>
-    <string name="menu_language_turkish">Turkish</string>
-    <string name="menu_language_bosnian">Bosnian</string>
-    <string name="menu_language_english">English</string>
+    <string name="menu_language">Dil</string>
+    <string name="menu_language_turkish">Türkçe</string>
+    <string name="menu_language_bosnian">Boşnakça</string>
+    <string name="menu_language_english">İngilizce</string>
     <string name="search_hint">Ara...</string>
 
     <!-- Content Strings -->
     <string name="content_no_phrases">Bu sozcuk veya anlam veri tabaninda bulunmamaktadir!!!</string>
-    <string name="content_example_sentences">Example Sentences</string>
+    <string name="content_example_sentences">Örnek Cümleler</string>
 
     <!-- Settings Activity Strings -->
-    <string name="options_search_options">Search</string>
-    <string name="options_appereance_options">Appereance</string>
-    <string name="options_fullscreen_checkbox">Set Fullscreen</string>
+    <string name="options_search_options">Ara</string>
+    <string name="options_appereance_options">Görünüm</string>
+    <string name="options_fullscreen_checkbox">Tam ekran ayarla</string>
 
     <!-- About Activity Strings -->
-    <string name="about_app">A beautiful, holo-styled dictionary app developed by the Burch University that does translation between Turkish, Bosnian and English languages.</string>
-    <string name="about_project_title">The Project</string>
-    <string name="about_project">Burch Dictionary project is led by the <a href="http://ibu.edu.ba">Burch University</a>. The application uses its own database put together by the students of the Burch University.</string>
-    <string name="about_devs_title">Developers</string>
-    <string name="about_devs_project_lead_title">Project Lead</string>
-    <string name="about_devs_project_lead_mustafa">Mustafa Arslan</string>
-    <string name="about_devs_project_lead_mustafa_contact"><a href="mailto:mustafa.arslan@ibu.edu.ba">Email</a></string>
-    <string name="about_devs_app_title">Application</string>
-    <string name="about_devs_app_desc">People who worked on this app instead of studying for their exams</string>
-    <string name="about_devs_app_sulejman">Sulejman Sarajlija</string>
-    <string name="about_devs_app_sulejman_info">This guy is the actual developer. He wrote the code from the ground up.</string>
-    <string name="about_devs_app_sulejman_contact"><a href="mailto:sulejmansarajlija@gmail.com">Email</a>, <a href="https://github.com/Sulejman">Github</a></string>
-    <string name="about_devs_app_ihsan">İhsan Işık</string>
-    <string name="about_devs_app_ihsan_info">The small-features guy. He implements small, detail features. Oh, he also happens to have designed the new user interface.</string>
-    <string name="about_devs_app_ihsan_contact"><a href="mailto:x.ihsan@gmail.com">Email</a>, <a href="https://github.com/xiprox">Github</a></string>
-    <string name="about_devs_web_title">Website</string>
-    <string name="about_devs_web_desc">Have you seen the <a href="http://dictionary.ibu.edu.ba">online version</a> of this dictionary? Well, this is the guy who is behind that!</string>
-    <string name="about_devs_web_dzenis">Dženis Ejupi</string>
+    <string name="about_app">Burç Üniversitesi tarafında geliştirilen, Türkçe, Boşnakça ve İngilizce dilleri arasında tercüme yapan, güzel kullanıcı arayüzlü sözlük uygulaması.</string>
+    <string name="about_project_title">Proje</string>
+    <string name="about_project">Burç Sözlük projesi <a href="http://ibu.edu.ba">Burç Üniversitesi</a> tarafından geliştiriliyor. Sözlük, Burç Üniversitresinin öğrencilerinin geliştirdiği veri tabanını kullanıyor.</string>
+    <string name="about_devs_title">Geliştiriciler</string>
+    <string name="about_devs_project_lead_title">Proje Koordinatörü</string>
+    <string name="about_devs_app_title">Uygulama</string>
+    <string name="about_devs_app_desc">Sınavlarına çalışmak yerine bu uygulama üzerinde çalışan insanlar</string>
+    <string name="about_devs_app_sulejman_info">Asıl geliştirici bu eleman. Uygulamanın temelini o yazdı.</string>
+    <string name="about_devs_app_ihsan_info">Ufak özellikler adamı. Ufak, detay özellikler üzerinde çalışır. Ha, bir de yeni arayüzü o tasarlamış bulunmaktadır.</string>
+    <string name="about_devs_web_title">Web Sitesi</string>
+    <string name="about_devs_web_desc">Bu sözlüğün <a href="http://dictionary.ibu.edu.ba">online versiyonunu</a> görmüş müydünüz? İşte onu bu arkadaş hazırladı!</string>
     <string name="about_devs_web_dzenis_info"></string>
-    <string name="about_devs_database_title">Database</string>
-    <string name="about_devs_database_desc">Of course, the vocabulary in this app didn\'t just descend from behind the clouds! Someone sacrificed their time and put them together.</string>
-    <string name="about_devs_database_lamija">Lamija Zukić</string>
+    <string name="about_devs_database_title">Verı Tabanı</string>
+    <string name="about_devs_database_desc">Tabi, bu sözlükteki kelimeler gökten inmedi! Birileri bu kelimeleri derledi.</string>
     <string name="about_devs_database_lamija_info"></string>
-    <string name="about_devs_database_mersima">Mersima Strika</string>
     <string name="about_devs_database_mersima_info"></string>
-    <string name="about_open_source_title">Open Source!</string>
-    <string name="about_open_source_desc">This application is open source, yes! It is BSD licensed and contributions are always welcome!</string>
-    <string name="about_open_source_github"><a href="https://github.com/Sulejman/DictionaryTurkish-English-Bosnian">Burch Dictionary on Github</a></string>
-    <string name="about_contact_title">Contact</string>
-    <string name="about_contact_desc">Have a suggestion? Found a bug? Get your voice heard! Please, don\'t send \"Wassup?\" though!</string>
-    <string name="about_libraries_title">Open Source Components</string>
-    <string name="about_libraries_desc">Burch Dictionary implements JakeWharton\'s <a href="http://actionbarsherlock.com/">ActionBarSherlock</a> library which is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a> license</string>
+    <string name="about_open_source_title">Açık Kaynak!</string>
+    <string name="about_open_source_desc">Bu uygulamanın kaynak kodu açık, evet! Uygulama BSD lisanslı ve katkılara da herzaman açığız!</string>
+    <string name="about_open_source_github"><a href="https://github.com/Sulejman/DictionaryTurkish-English-Bosnian">Burç Sözlük Github\'da</a></string>
+    <string name="about_contact_title">İrtibat</string>
+    <string name="about_contact_desc">Tavsiyeniz mi var? Hata mı buldunuz? Sesinizi duyurun! Ama lütfen, \"Naber?\" yazmayın!</string>
+    <string name="about_libraries_title">Açık Kaynaklı Bileşenler</string>
+    <string name="about_libraries_desc">Burç Sözlük, JakeWharton\'ın <a href="http://www.apache.org/licenses/LICENSE-2.0.html">Apache 2.0</a> lisanslı <a href="http://actionbarsherlock.com/">ActionBarSherlock</a> isimli kütüphanesini kullanmaktadır.</string>
 
 </resources>
