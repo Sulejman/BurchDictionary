@@ -1,4 +1,3 @@
-[submodule "third-party/ActionBarSherlock"]
+[submodule "Libraries/ActionBarSherlock"]
 	path = Libraries/ActionBarSherlock
 	url = https://github.com/JakeWharton/ActionBarSherlock.git
-	ignore = dirty
