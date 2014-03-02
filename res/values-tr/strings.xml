@@ -13,7 +13,8 @@
     <string name="search_hint">Ara...</string>
 
     <!-- Content Strings -->
-    <string name="content_no_phrases">Bu sozcuk veya anlam veri tabaninda bulunmamaktadir!!!</string>
+    <string name="content_no_phrases_title">Cümleler? Haa...</string>
+    <string name="content_no_phrases_desc">Henüz gelmemişler gibi gözüküyor. Ama her an burada olabilirler. Gözünüzü açık tutun!</string>
     <string name="content_example_sentences">Örnek Cümleler</string>
 
     <!-- Settings Activity Strings -->

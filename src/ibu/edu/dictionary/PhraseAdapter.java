@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class PhraseAdapter extends BaseAdapter {
@@ -33,6 +35,8 @@ public class PhraseAdapter extends BaseAdapter {
 		TextView textViewBsPhTrPr;
 		TextView textViewTrPhBsPr;
 		TextView textViewEnPh;
+		LinearLayout contentHolder;
+		LinearLayout noPhrasesHolder;
 	}
 
 	@Override
@@ -55,6 +59,7 @@ public class PhraseAdapter extends BaseAdapter {
 		if (view == null) {
 			holder = new ViewHolder();
 			view = inflater.inflate(R.layout.details_each, null);
+
 			// Locate the TextViews in each_item.xml
 			holder.textViewEnPh = (TextView) view
 					.findViewById(R.id.textViewEnglishPhrase);
@@ -66,6 +71,10 @@ public class PhraseAdapter extends BaseAdapter {
 					.findViewById(R.id.textViewTurkishPhraseBosnianPronunciation);
 			holder.textViewBsPhTrPr = (TextView) view
 					.findViewById(R.id.textViewBosnianPhraseTurkishPronunciation);
+			holder.contentHolder = (LinearLayout) view
+					.findViewById(R.id.details_item_content_holder);
+			holder.noPhrasesHolder = (LinearLayout) view
+					.findViewById(R.id.details_no_phrases_holder);
 			view.setTag(holder);
 
 		} else {
@@ -87,9 +96,8 @@ public class PhraseAdapter extends BaseAdapter {
 								+ " ]");
 			}
 		} catch (NullPointerException e) {
-			holder.textViewTrPhBsPr.setText(mContext.getResources().getString(
-					R.string.content_no_phrases));
-			holder.textViewBsPhTrPr.setText(" ");
+			holder.contentHolder.setVisibility(View.GONE);
+			holder.noPhrasesHolder.setVisibility(View.VISIBLE);
 		}
 
 		holder.textViewEnPh.setText(wordList.get(position).KEY_ENGLISH_PHRASE);
