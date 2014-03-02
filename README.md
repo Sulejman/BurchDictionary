@@ -1,7 +1,8 @@
-Turkish-Bosnian-English Dictionary
-==================================
+Burch Dictionary
+================
 
-A beautiful, holo-styled dictionary app developed by the Burch University that does translation between Turkish, Bosnian and English languages.
+A beautiful, holo-styled dictionary app developed by the Burch University which does translation between Turkish, Bosnian and English languages. Not only does it give you the meanings of words, it also provides pronounciations and example sentences.
+
 
 ![dict_featured](https://f.cloud.github.com/assets/2550945/2296834/23f41abc-a0a4-11e3-8cf2-82ccf9e30c13.png)
 
