@@ -22,3 +22,9 @@ Third-Party Components
 License
 -------
 Burch Dictionary is BSD licensed and contributions are welcome!
+
+
+Contributing
+------------
+
+For information on how to contribute please visit <a href="https://github.com/Sulejman/DictionaryTurkish-English-Bosnian/wiki/Contributing">this wiki page</a>.
