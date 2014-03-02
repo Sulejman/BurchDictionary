@@ -21,7 +21,7 @@ Third-Party Components
 
 Building
 --------
-It is highly recommended to refer to the <a href="https://github.com/Sulejman/DictionaryTurkish-English-Bosnian/wiki/Building">Building page</a> on our wiki before building our app.
+It is highly recommended to refer to the <a href="https://github.com/Sulejman/BurchDictionary/wiki/Building">Building page</a> on our wiki before building our app.
 
 
 License
@@ -31,4 +31,4 @@ Burch Dictionary is BSD licensed and contributions are welcome!
 
 Contributing
 ------------
-For information on how to contribute please refer to <a href="https://github.com/Sulejman/DictionaryTurkish-English-Bosnian/wiki/Contributing">this wiki page</a>.
+For information on how to contribute please refer to <a href="https://github.com/Sulejman/BurchDictionary/wiki/Contributing">this wiki page</a>.
