@@ -191,9 +191,26 @@ public class WordAdapter extends BaseAdapter implements SectionIndexer {
 			public void onClick(View arg0) {
 				// Send single item click data to SingleItemView Class
 				Intent intent = new Intent(mContext, ShowDetailsActivity.class);
+
 				// Pass all data textViewWord
 				intent.putExtra("textViewWord",
 						(wordList.get(position).getTurkishWord()));
+
+				// Pass a string which will be the title of the
+				// activity
+				if (languageBar.equals("TR")) {
+					intent.putExtra("actionbarTitle",
+							(wordList.get(position).getTurkishWord()));
+				}
+				if (languageBar.equals("BS")) {
+					intent.putExtra("actionbarTitle",
+							(wordList.get(position).getBosnianWord()));
+				}
+				if (languageBar.equals("EN")) {
+					intent.putExtra("actionbarTitle",
+							(wordList.get(position).getEnglishWord()));
+				}
+
 				// Start SingleItemView Class
 				mContext.startActivity(intent);
 			}

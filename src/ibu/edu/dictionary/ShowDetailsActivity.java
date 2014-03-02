@@ -21,6 +21,7 @@ public class ShowDetailsActivity extends SherlockActivity {
 	TextView bosnianPr;
 	TextView turkishPr;
 	String wordParser;
+	String actionbarTitle;
 	SQLiteAssetHelper myDBHelper;
 	Word word;
 	Cursor c;
@@ -33,13 +34,16 @@ public class ShowDetailsActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.detailed_word);
 
+		Intent i = getIntent();
+		wordParser = i.getStringExtra("textViewWord");
+		actionbarTitle = i.getStringExtra("actionbarTitle");
+
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setIcon(R.drawable.ic_action_bar);
 
 		// As we are using a different icon which is wider than normal, the text
 		// comes too close to the icon. Thus, we use this little trick.
-		getSupportActionBar().setTitle(
-				" " + getResources().getString(R.string.app_name));
+		getSupportActionBar().setTitle(" " + actionbarTitle);
 
 		wordsList = (ListView) findViewById(R.id.listView2);
 		myDBHelper = new SQLiteAssetHelper(this.getApplicationContext());
@@ -53,9 +57,6 @@ public class ShowDetailsActivity extends SherlockActivity {
 		} catch (SQLException sqle) {
 			throw sqle;
 		}
-
-		Intent i = getIntent();
-		wordParser = i.getStringExtra("textViewWord");
 
 		final PhraseAdapter wordAdapter = new PhraseAdapter(
 				ShowDetailsActivity.this, showList());
