@@ -4,12 +4,12 @@
         android:id="@+id/action_search"
         android:actionViewClass="com.actionbarsherlock.widget.SearchView"
         android:icon="@drawable/ic_action_search"
-        android:showAsAction="collapseActionView|ifRoom"
+        android:showAsAction="collapseActionView|always"
         android:title="@string/search_hint"/>
     <item
         android:id="@+id/menu_language"
         android:icon="@drawable/flag_tr"
-        android:showAsAction="ifRoom"
+        android:showAsAction="always"
         android:title="@string/menu_language">
         <menu>
             <group
