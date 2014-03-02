@@ -8,7 +8,7 @@
         android:title="@string/search_hint"/>
     <item
         android:id="@+id/menu_language"
-        android:icon="@drawable/ic_action_tr"
+        android:icon="@drawable/flag_tr"
         android:showAsAction="ifRoom"
         android:title="@string/menu_language">
         <menu>
@@ -18,14 +18,17 @@
                 <item
                     android:id="@+id/languageTurkish"
                     android:checkable="false"
+                    android:icon="@drawable/flag_tr"
                     android:title="@string/menu_language_turkish"/>
                 <item
                     android:id="@+id/languageBosnian"
                     android:checkable="false"
+                    android:icon="@drawable/flag_bs"
                     android:title="@string/menu_language_bosnian"/>
                 <item
                     android:id="@+id/languageEnglish"
                     android:checkable="false"
+                    android:icon="@drawable/flag_uk"
                     android:title="@string/menu_language_english"/>
             </group>
         </menu>
