@@ -43,9 +43,7 @@ out/
 
 #Project Files#
 ###############
-.project*
 .classpath*
 proguard-project*
-project.properties*
 
 
