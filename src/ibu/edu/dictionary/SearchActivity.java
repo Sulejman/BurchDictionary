@@ -56,6 +56,13 @@ public class SearchActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 
+		getSupportActionBar().setIcon(R.drawable.ic_action_bar);
+
+		// As we are using a different icon which is wider than normal, the text
+		// comes too close to the icon. Thus, we use this little trick.
+		getSupportActionBar().setTitle(
+				" " + getResources().getString(R.string.app_name));
+
 		new LoadTask().execute();
 	}
 
@@ -100,7 +107,8 @@ public class SearchActivity extends SherlockActivity {
 
 		if (searchQuery.length() != 0) {
 			wordsList.setFastScrollEnabled(false);
-			final WordAdapter wordAdapterSearch = new WordAdapter(SearchActivity.this, wordsAfterSearch, selectedLanguage);
+			final WordAdapter wordAdapterSearch = new WordAdapter(
+					SearchActivity.this, wordsAfterSearch, selectedLanguage);
 			wordsList.setAdapter(wordAdapterSearch);
 		}
 
@@ -247,7 +255,13 @@ public class SearchActivity extends SherlockActivity {
 		}
 
 		else if (selectedLanguage.equals("BS")) {
-			c1 = myDBHelper.getSearchBosnian(searchQuery.toUpperCase()); // This code works, ignore warning about locales
+			c1 = myDBHelper.getSearchBosnian(searchQuery.toUpperCase()); // This
+																			// code
+																			// works,
+																			// ignore
+																			// warning
+																			// about
+																			// locales
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
@@ -288,7 +302,13 @@ public class SearchActivity extends SherlockActivity {
 		}
 
 		else if (selectedLanguage.equals("EN")) {
-			c1 = myDBHelper.getSearchEnglish(searchQuery.toUpperCase()); // This code works, ignore warning about locales
+			c1 = myDBHelper.getSearchEnglish(searchQuery.toUpperCase()); // This
+																			// code
+																			// works,
+																			// ignore
+																			// warning
+																			// about
+																			// locales
 			c1.moveToFirst();
 
 			for (int ID = 0; ID < c1.getCount(); ID = ID + 1) {
@@ -396,15 +416,15 @@ public class SearchActivity extends SherlockActivity {
 			break;
 		case R.id.languageTurkish:
 			switchToTurkish();
-			languageItem.setIcon(R.drawable.ic_action_tr);
+			languageItem.setIcon(R.drawable.flag_tr);
 			break;
 		case R.id.languageBosnian:
 			switchToBosnian();
-			languageItem.setIcon(R.drawable.ic_action_bs);
+			languageItem.setIcon(R.drawable.flag_bs);
 			break;
 		case R.id.languageEnglish:
 			switchToEnglish();
-			languageItem.setIcon(R.drawable.ic_action_en);
+			languageItem.setIcon(R.drawable.flag_uk);
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -503,7 +523,7 @@ public class SearchActivity extends SherlockActivity {
 
 			clearUp();
 
-			//wordsList.setFastScrollEnabled(true); moved down there
+			// wordsList.setFastScrollEnabled(true); moved down there
 
 			try {
 				myDBHelper.createDataBase();

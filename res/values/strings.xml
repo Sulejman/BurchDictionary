@@ -27,7 +27,7 @@
     <string name="about_project_title">The Project</string>
     <string name="about_project">Burch Dictionary project is led by the <a href="http://ibu.edu.ba">Burch University</a>. The application uses its own database put together by the students of the Burch University.</string>
     <string name="about_devs_title">Developers</string>
-    <string name="about_devs_project_lead_title">Project Lead</string>
+    <string name="about_devs_project_lead_title">Project Coordinator</string>
     <string name="about_devs_project_lead_mustafa">Mustafa Arslan</string>
     <string name="about_devs_project_lead_mustafa_contact"><a href="mailto:mustafa.arslan@ibu.edu.ba">Email</a></string>
     <string name="about_devs_app_title">Application</string>

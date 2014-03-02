@@ -21,6 +21,13 @@ public class AboutActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
 
+		getSupportActionBar().setIcon(R.drawable.ic_action_bar);
+
+		// As we are using a different icon which is wider than normal, the text
+		// comes too close to the icon. Thus, we use this little trick.
+		getSupportActionBar().setTitle(
+				" " + getResources().getString(R.string.action_about));
+
 		mDescProject = (TextView) findViewById(R.id.about_desc_project);
 		mDescWeb = (TextView) findViewById(R.id.about_desc_web);
 		mLinkOpenSource = (TextView) findViewById(R.id.about_link_open_source);
