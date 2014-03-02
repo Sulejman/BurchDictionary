@@ -6,10 +6,10 @@
 
     <!-- Action bar related Strings -->
     <string name="action_about">O Rječniku</string>
-    <string name="menu_language">Language</string>
-    <string name="menu_language_turkish">Turkish</string>
-    <string name="menu_language_bosnian">Bosnian</string>
-    <string name="menu_language_english">English</string>
+    <string name="menu_language">Jezik</string>
+    <string name="menu_language_turkish">Turski</string>
+    <string name="menu_language_bosnian">Bosanski</string>
+    <string name="menu_language_english">Engleski</string>
     <string name="search_hint">Pretraži...</string>
 
     <!-- Content Strings -->
