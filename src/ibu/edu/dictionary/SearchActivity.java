@@ -56,6 +56,13 @@ public class SearchActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
 
+		getSupportActionBar().setIcon(R.drawable.ic_action_bar);
+
+		// As we are using a different icon which is wider than normal, the text
+		// comes too close to the icon. Thus, we use this little trick.
+		getSupportActionBar().setTitle(
+				" " + getResources().getString(R.string.app_name));
+
 		new LoadTask().execute();
 	}
 
