@@ -37,7 +37,9 @@
     <string name="about_devs_web_dzenis_info"></string>
     <string name="about_devs_database_title">Verı Tabanı</string>
     <string name="about_devs_database_desc">Tabi, bu sözlükteki kelimeler gökten inmedi! Birileri bu kelimeleri derledi.</string>
+    <string name="about_devs_database_lamija">Lamija Zukić (Türkçe kısmı)</string>
     <string name="about_devs_database_lamija_info"></string>
+    <string name="about_devs_database_mersima">Mersima Strika (İngilizce kısmı)</string>
     <string name="about_devs_database_mersima_info"></string>
     <string name="about_open_source_title">Açık Kaynak!</string>
     <string name="about_open_source_desc">Bu uygulamanın kaynak kodu açık, evet! Uygulama BSD lisanslı ve katkılara da herzaman açığız!</string>
