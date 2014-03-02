@@ -45,9 +45,9 @@
     <string name="about_devs_web_dzenis_info"></string>
     <string name="about_devs_database_title">Database</string>
     <string name="about_devs_database_desc">Of course, the vocabulary in this app didn\'t just descend from behind the clouds! Someone sacrificed their time and put them together.</string>
-    <string name="about_devs_database_lamija">Lamija Zukić</string>
+    <string name="about_devs_database_lamija">Lamija Zukić (Turkish part)</string>
     <string name="about_devs_database_lamija_info"></string>
-    <string name="about_devs_database_mersima">Mersima Strika</string>
+    <string name="about_devs_database_mersima">Mersima Strika (English part)</string>
     <string name="about_devs_database_mersima_info"></string>
     <string name="about_open_source_title">Open Source!</string>
     <string name="about_open_source_desc">This application is open source, yes! It is BSD licensed and contributions are always welcome!</string>
