@@ -23,7 +23,7 @@
     <string name="options_fullscreen_checkbox">Tam ekran ayarla</string>
 
     <!-- About Activity Strings -->
-    <string name="about_app">Burç Üniversitesi tarafında geliştirilen, Türkçe, Boşnakça ve İngilizce dilleri arasında tercüme yapan, güzel kullanıcı arayüzlü sözlük uygulaması.</string>
+    <string name="about_app">Burç Üniversitesi tarafında geliştirilen, Türkçe, Boşnakça ve İngilizce dilleri arasında tercüme yapan, güzel kullanıcı arayüzlü sözlük uygulaması. Kelime anlamlarının dışında, telaffuz ve örnek cümleler de içerir.</string>
     <string name="about_project_title">Proje</string>
     <string name="about_project">Burç Sözlük projesi <a href="http://ibu.edu.ba">Burç Üniversitesi</a> tarafından geliştiriliyor. Sözlük, Burç Üniversitesinin öğrencilerinin geliştirdiği veri tabanını kullanıyor.</string>
     <string name="about_devs_title">Geliştiriciler</string>

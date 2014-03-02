@@ -24,7 +24,7 @@
     <string name="options_fullscreen_checkbox">Set Fullscreen</string>
 
     <!-- About Activity Strings -->
-    <string name="about_app">A beautiful, holo-styled dictionary app developed by the Burch University that does translation between Turkish, Bosnian and English languages.</string>
+    <string name="about_app">A beautiful, holo-styled dictionary app developed by the Burch University which does translation between Turkish, Bosnian and English languages. Not only does it give you the meanings of words, it also provides pronunciations and example sentences.</string>
     <string name="about_project_title">The Project</string>
     <string name="about_project">Burch Dictionary project is led by the <a href="http://ibu.edu.ba">Burch University</a>. The application uses its own database put together by the students of the Burch University.</string>
     <string name="about_devs_title">Developers</string>
