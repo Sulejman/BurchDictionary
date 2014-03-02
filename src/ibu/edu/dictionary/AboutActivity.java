@@ -21,6 +21,8 @@ public class AboutActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_about);
 
+		getSupportActionBar().setTitle(R.string.action_about);
+
 		mDescProject = (TextView) findViewById(R.id.about_desc_project);
 		mDescWeb = (TextView) findViewById(R.id.about_desc_web);
 		mLinkOpenSource = (TextView) findViewById(R.id.about_link_open_source);
