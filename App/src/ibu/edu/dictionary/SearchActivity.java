@@ -7,11 +7,14 @@ import java.util.Collections;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -44,17 +47,15 @@ public class SearchActivity extends SherlockActivity {
 	long last_text_edit = 0;
 	Handler h = new Handler();
 	boolean already_queried = false;
-
 	String searchQuery = "";
-
 	Menu menu;
-
 	String selectedLanguage = "TR";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
+		
 
 		getSupportActionBar().setIcon(R.drawable.ic_action_bar);
 
@@ -68,7 +69,6 @@ public class SearchActivity extends SherlockActivity {
 
 	private void updateSearch(String query) {
 		searchQuery = query;
-
 		last_text_edit = System.currentTimeMillis();
 		h.postDelayed(input_finish_checker, idle_min);
 	}
@@ -356,14 +356,12 @@ public class SearchActivity extends SherlockActivity {
 		getSupportMenuInflater().inflate(R.menu.search, menu);
 		this.menu = menu;
 
-		MenuItem seachItem = menu.findItem(R.id.action_search);
+		MenuItem searchItem = menu.findItem(R.id.action_search);
 
 		// Associate searchable configuration with the SearchView
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
-				.getActionView();
-		searchView.setSearchableInfo(searchManager
-				.getSearchableInfo(getComponentName()));
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
 
 		searchView.setOnQueryTextListener(new OnQueryTextListener() {
 
@@ -386,7 +384,7 @@ public class SearchActivity extends SherlockActivity {
 
 		});
 
-		seachItem.setOnActionExpandListener(new OnActionExpandListener() {
+		searchItem.setOnActionExpandListener(new OnActionExpandListener() {
 
 			@Override
 			public boolean onMenuItemActionExpand(MenuItem item) {
@@ -432,6 +430,7 @@ public class SearchActivity extends SherlockActivity {
 
 	public void switchToTurkish() {
 		selectedLanguage = "TR";
+		savePreferences("saved_language","TR");
 
 		WordAdapter.stringLanguage = "TR";
 
@@ -452,6 +451,7 @@ public class SearchActivity extends SherlockActivity {
 
 	public void switchToBosnian() {
 		selectedLanguage = "BS";
+		savePreferences("saved_language","BS");
 
 		WordAdapter.stringLanguage = "BS";
 		Log.d("Sortion of section letters", "Static variable updated to: "
@@ -474,6 +474,7 @@ public class SearchActivity extends SherlockActivity {
 
 	public void switchToEnglish() {
 		selectedLanguage = "EN";
+		savePreferences("saved_language","EN");
 
 		WordAdapter.stringLanguage = "EN";
 		Log.d("Sortion of section letters", "Static variable updated to: "
@@ -520,6 +521,7 @@ public class SearchActivity extends SherlockActivity {
 		protected String doInBackground(String... arg0) {
 			wordsList = (ListView) findViewById(R.id.listViewMain);
 			myDBHelper = new SQLiteAssetHelper(getApplicationContext());
+			
 
 			clearUp();
 
@@ -538,7 +540,6 @@ public class SearchActivity extends SherlockActivity {
 			}
 
 			WordAdapter.stringLanguage = selectedLanguage;
-
 			words = showList();
 
 			SearchActivity.this.runOnUiThread(new Runnable() {
@@ -555,6 +556,7 @@ public class SearchActivity extends SherlockActivity {
 
 					wordsEnglish = showList();
 					Collections.sort(wordsEnglish, new Word.OrderByEnglish());
+					loadSavedPreferences();
 				}
 			});
 
@@ -582,4 +584,32 @@ public class SearchActivity extends SherlockActivity {
 
 		}
 	}
+	
+	private void loadSavedPreferences() {
+		    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		    String savedLanguage = sharedPreferences.getString("saved_language", "");
+		    com.actionbarsherlock.view.MenuItem languageItem = menu
+					.findItem(R.id.menu_language);
+		    
+		    if(savedLanguage.equals("BS")){
+		    	switchToBosnian();
+		    	languageItem.setIcon(R.drawable.flag_bs);
+		    }
+		    else if(savedLanguage.equals("EN")){
+		    	switchToEnglish();
+		    	languageItem.setIcon(R.drawable.flag_uk);
+		    }
+		    else{
+		    	switchToTurkish();
+		    	languageItem.setIcon(R.drawable.flag_tr);
+		    }
+	}
+	
+	private void savePreferences(String key, String value){
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+		Editor editor = sharedPreferences.edit();
+		editor.putString(key, value);
+		editor.commit();
+	}
+
 }
