@@ -51,7 +51,7 @@
     <string name="about_devs_database_mersima_info"></string>
     <string name="about_open_source_title">Open Source!</string>
     <string name="about_open_source_desc">This application is open source, yes! It is BSD licensed and contributions are always welcome!</string>
-    <string name="about_open_source_github"><a href="https://github.com/Sulejman/DictionaryTurkish-English-Bosnian">Burch Dictionary on Github</a></string>
+    <string name="about_open_source_github"><a href="https://github.com/Sulejman/BurchDictionary">Burch Dictionary on Github</a></string>
     <string name="about_contact_title">Contact</string>
     <string name="about_contact_desc">Have a suggestion? Found a bug? Get your voice heard! Please, don\'t send \"Wassup?\" though!</string>
     <string name="about_libraries_title">Open Source Components</string>
