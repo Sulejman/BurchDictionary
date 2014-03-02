@@ -2,6 +2,7 @@
 <resources>
 
     <color name="background">#dddddd</color>
+    <color name="background_pressed">#cccccc</color>
     <color name="apptheme_main">#9c3a3a</color>
     <color name="apptheme_secondary">#803232</color>
     <color name="apptheme_accent">#ba4646</color>

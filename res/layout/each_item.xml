@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="right"
+    android:background="@drawable/listview_item_bg"
     android:clickable="true"
     android:orientation="horizontal"
     android:padding="4dp" >
@@ -27,8 +28,7 @@
                 android:maxLines="1"
                 android:text="TextView"
                 android:textColor="@color/text_turkish"
-                android:textSize="17sp"
-                 />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/textViewTrP"
@@ -59,8 +59,7 @@
                 android:maxLines="1"
                 android:text="TextView"
                 android:textColor="@color/text_bosnian"
-                android:textSize="13sp"
-                 />
+                android:textSize="13sp" />
 
             <TextView
                 android:id="@+id/textViewBsP"
@@ -92,8 +91,7 @@
                 android:maxLines="1"
                 android:text="TextView"
                 android:textColor="@color/text_english"
-                android:textSize="13sp"
-                 />
+                android:textSize="13sp" />
         </LinearLayout>
     </LinearLayout>
 
