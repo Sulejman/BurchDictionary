@@ -13,8 +13,8 @@
     <string name="search_hint">Pretraži...</string>
 
     <!-- Content Strings -->
-    <string name="content_no_phrases_title">Phrases? Ah...</string>
-    <string name="content_no_phrases_desc">Well, it looks like they haven\'t arrived yet. Stay tuned and they will be here anytime!</string>
+    <string name="content_no_phrases_title">Fraze? Ah...</string>
+    <string name="content_no_phrases_desc">Izgleda da za ovu riječ nema ništa zasad. Fraze se ažuriraju zajedno sa aplikacijom.</string>
     <string name="content_example_sentences">Primjeri u rečenici:</string>
 
     <!-- Settings Activity Strings -->
