@@ -1,4 +1,4 @@
-package ibu.edu.dictionary;
+package ba.edu.ibu.dictionary;
 
 import java.text.Collator;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.SectionIndexer;
 import android.widget.TextView;
-import android.view.View.OnClickListener;
 
 public class WordAdapter extends BaseAdapter implements SectionIndexer {
 

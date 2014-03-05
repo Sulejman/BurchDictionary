@@ -1,4 +1,4 @@
-package ibu.edu.dictionary;
+package ba.edu.ibu.dictionary;
 
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;

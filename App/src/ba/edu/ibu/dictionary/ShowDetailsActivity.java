@@ -1,10 +1,8 @@
-package ibu.edu.dictionary;
+package ba.edu.ibu.dictionary;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.actionbarsherlock.app.SherlockActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,6 +10,8 @@ import android.database.SQLException;
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.actionbarsherlock.app.SherlockActivity;
 
 public class ShowDetailsActivity extends SherlockActivity {
 	TextView bosnian;

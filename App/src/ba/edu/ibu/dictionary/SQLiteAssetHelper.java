@@ -1,4 +1,4 @@
-package ibu.edu.dictionary;
+package ba.edu.ibu.dictionary;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,16 +12,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteQueryBuilder;
+import android.os.Environment;
 import android.util.Log;
 
 public class SQLiteAssetHelper extends SQLiteOpenHelper {
 
 	// The Android's default system path of your application database.
-	private static String DB_PATH = "/data/data/ibu.edu.dictionary/databases/"; // Ignore
-																				// warning
-																				// about
-																				// hardcoded
-																				// path
+	private static String DB_PATH = Environment.getDataDirectory() + "/data/ba.edu.ibu.dictionary/databases/";
 
 	private static String DB_NAME = "DatabaseDictionary.sqlite";
 	public static final String KEY_ROWID = "_ID";

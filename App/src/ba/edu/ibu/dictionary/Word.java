@@ -1,4 +1,4 @@
-package ibu.edu.dictionary;
+package ba.edu.ibu.dictionary;
 
 import java.text.Collator;
 import java.util.Comparator;

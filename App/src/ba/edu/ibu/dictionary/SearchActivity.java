@@ -1,4 +1,4 @@
-package ibu.edu.dictionary;
+package ba.edu.ibu.dictionary;
 
 import java.io.IOException;
 import java.util.ArrayList;
