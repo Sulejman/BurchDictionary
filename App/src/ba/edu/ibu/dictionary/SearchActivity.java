@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -55,7 +57,6 @@ public class SearchActivity extends SherlockActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search);
-		
 
 		getSupportActionBar().setIcon(R.drawable.ic_action_bar);
 
@@ -80,7 +81,7 @@ public class SearchActivity extends SherlockActivity {
 				final WordAdapter wordAdapter = new WordAdapter(
 						SearchActivity.this, words, selectedLanguage);
 				wordsList.setAdapter(wordAdapter);
-				wordsList.setFastScrollEnabled(true);
+				enableFastScroll();
 			} else
 				wordsAfterSearch = showListAfterSearchPerformed();
 		} else if (selectedLanguage.equals("BS")) {
@@ -88,7 +89,7 @@ public class SearchActivity extends SherlockActivity {
 				final WordAdapter wordAdapterBosnian = new WordAdapter(
 						SearchActivity.this, wordsBosnian, selectedLanguage);
 				wordsList.setAdapter(wordAdapterBosnian);
-				wordsList.setFastScrollEnabled(true);
+				enableFastScroll();
 			} else {
 				wordsAfterSearch = showListAfterSearchPerformed();
 				Collections.sort(wordsAfterSearch, new Word.OrderByBosnian());
@@ -98,7 +99,7 @@ public class SearchActivity extends SherlockActivity {
 				final WordAdapter wordAdapterEnglish = new WordAdapter(
 						SearchActivity.this, wordsEnglish, selectedLanguage);
 				wordsList.setAdapter(wordAdapterEnglish);
-				wordsList.setFastScrollEnabled(true);
+				enableFastScroll();
 			} else {
 				wordsAfterSearch = showListAfterSearchPerformed();
 				Collections.sort(wordsAfterSearch, new Word.OrderByEnglish());
@@ -106,7 +107,7 @@ public class SearchActivity extends SherlockActivity {
 		}
 
 		if (searchQuery.length() != 0) {
-			wordsList.setFastScrollEnabled(false);
+			disableFastScroll();
 			final WordAdapter wordAdapterSearch = new WordAdapter(
 					SearchActivity.this, wordsAfterSearch, selectedLanguage);
 			wordsList.setAdapter(wordAdapterSearch);
@@ -360,8 +361,10 @@ public class SearchActivity extends SherlockActivity {
 
 		// Associate searchable configuration with the SearchView
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-		SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		SearchView searchView = (SearchView) menu.findItem(R.id.action_search)
+				.getActionView();
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
 
 		searchView.setOnQueryTextListener(new OnQueryTextListener() {
 
@@ -430,7 +433,7 @@ public class SearchActivity extends SherlockActivity {
 
 	public void switchToTurkish() {
 		selectedLanguage = "TR";
-		savePreferences("saved_language","TR");
+		savePreferences("saved_language", "TR");
 
 		WordAdapter.stringLanguage = "TR";
 
@@ -438,10 +441,9 @@ public class SearchActivity extends SherlockActivity {
 			final WordAdapter wordAdapter = new WordAdapter(
 					SearchActivity.this, words, selectedLanguage);
 			wordsList.setAdapter(wordAdapter);
-			wordsList.setFastScrollEnabled(false);
-			wordsList.setFastScrollEnabled(true);
+			enableFastScroll();
 		} else {
-			wordsList.setFastScrollEnabled(false);
+			disableFastScroll();
 			final WordAdapter wordAdapterSearch = new WordAdapter(
 					SearchActivity.this, showListAfterSearchPerformed(),
 					selectedLanguage);
@@ -451,7 +453,7 @@ public class SearchActivity extends SherlockActivity {
 
 	public void switchToBosnian() {
 		selectedLanguage = "BS";
-		savePreferences("saved_language","BS");
+		savePreferences("saved_language", "BS");
 
 		WordAdapter.stringLanguage = "BS";
 		Log.d("Sortion of section letters", "Static variable updated to: "
@@ -460,10 +462,9 @@ public class SearchActivity extends SherlockActivity {
 			final WordAdapter wordAdapterBosnian = new WordAdapter(
 					SearchActivity.this, wordsBosnian, selectedLanguage);
 			wordsList.setAdapter(wordAdapterBosnian);
-			wordsList.setFastScrollEnabled(false);
-			wordsList.setFastScrollEnabled(true);
+			enableFastScroll();
 		} else {
-			wordsList.setFastScrollEnabled(false);
+			disableFastScroll();
 			wordsAfterSearch = showListAfterSearchPerformed();
 			Collections.sort(wordsAfterSearch, new Word.OrderByBosnian());
 			final WordAdapter wordAdapterSearch = new WordAdapter(
@@ -474,7 +475,7 @@ public class SearchActivity extends SherlockActivity {
 
 	public void switchToEnglish() {
 		selectedLanguage = "EN";
-		savePreferences("saved_language","EN");
+		savePreferences("saved_language", "EN");
 
 		WordAdapter.stringLanguage = "EN";
 		Log.d("Sortion of section letters", "Static variable updated to: "
@@ -483,10 +484,9 @@ public class SearchActivity extends SherlockActivity {
 			final WordAdapter wordAdapterEnglish = new WordAdapter(
 					SearchActivity.this, wordsEnglish, selectedLanguage);
 			wordsList.setAdapter(wordAdapterEnglish);
-			wordsList.setFastScrollEnabled(false);
-			wordsList.setFastScrollEnabled(true);
+			enableFastScroll();
 		} else {
-			wordsList.setFastScrollEnabled(false);
+			disableFastScroll();
 			wordsAfterSearch = showListAfterSearchPerformed();
 			Collections.sort(wordsAfterSearch, new Word.OrderByEnglish());
 			final WordAdapter wordAdapterSearch = new WordAdapter(
@@ -521,11 +521,8 @@ public class SearchActivity extends SherlockActivity {
 		protected String doInBackground(String... arg0) {
 			wordsList = (ListView) findViewById(R.id.listViewMain);
 			myDBHelper = new SQLiteAssetHelper(getApplicationContext());
-			
 
 			clearUp();
-
-			// wordsList.setFastScrollEnabled(true); moved down there
 
 			try {
 				myDBHelper.createDataBase();
@@ -550,7 +547,7 @@ public class SearchActivity extends SherlockActivity {
 							SearchActivity.this, words, selectedLanguage);
 
 					wordsList.setAdapter(wordAdapter);
-					wordsList.setFastScrollEnabled(true);// moved from above
+					enableFastScroll();
 					wordsBosnian = showList();
 					Collections.sort(wordsBosnian, new Word.OrderByBosnian());
 
@@ -584,32 +581,50 @@ public class SearchActivity extends SherlockActivity {
 
 		}
 	}
-	
+
 	private void loadSavedPreferences() {
-		    SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-		    String savedLanguage = sharedPreferences.getString("saved_language", "");
-		    com.actionbarsherlock.view.MenuItem languageItem = menu
-					.findItem(R.id.menu_language);
-		    
-		    if(savedLanguage.equals("BS")){
-		    	switchToBosnian();
-		    	languageItem.setIcon(R.drawable.flag_bs);
-		    }
-		    else if(savedLanguage.equals("EN")){
-		    	switchToEnglish();
-		    	languageItem.setIcon(R.drawable.flag_uk);
-		    }
-		    else{
-		    	switchToTurkish();
-		    	languageItem.setIcon(R.drawable.flag_tr);
-		    }
+		SharedPreferences sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		String savedLanguage = sharedPreferences
+				.getString("saved_language", "");
+		com.actionbarsherlock.view.MenuItem languageItem = menu
+				.findItem(R.id.menu_language);
+
+		if (savedLanguage.equals("BS")) {
+			switchToBosnian();
+			languageItem.setIcon(R.drawable.flag_bs);
+		} else if (savedLanguage.equals("EN")) {
+			switchToEnglish();
+			languageItem.setIcon(R.drawable.flag_uk);
+		} else {
+			switchToTurkish();
+			languageItem.setIcon(R.drawable.flag_tr);
+		}
 	}
-	
-	private void savePreferences(String key, String value){
-		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+	private void savePreferences(String key, String value) {
+		SharedPreferences sharedPreferences = PreferenceManager
+				.getDefaultSharedPreferences(this);
 		Editor editor = sharedPreferences.edit();
 		editor.putString(key, value);
 		editor.commit();
 	}
 
+	@SuppressLint("NewApi")
+	public void enableFastScroll() {
+		wordsList.setFastScrollEnabled(true);
+
+		if (Build.VERSION.SDK_INT > 11) {
+			wordsList.setFastScrollAlwaysVisible(true);
+		}
+	}
+
+	@SuppressLint("NewApi")
+	public void disableFastScroll() {
+		wordsList.setFastScrollEnabled(false);
+
+		if (Build.VERSION.SDK_INT > 11) {
+			wordsList.setFastScrollAlwaysVisible(false);
+		}
+	}
 }
